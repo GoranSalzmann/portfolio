@@ -6,7 +6,12 @@ export default function Home() {
       {/* Hero Section */}
       <Section variant="hero" title="Mike Karl" subtitle="Fullstack Developer / Web Developer / System Developer">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Card variant="glass" className="float">
+          <Card
+            variant="glass"
+            className="float"
+            bg={"linear-gradient(135deg, transparent 0%, transparent 55%, rgba(59,130,246,0.15) 70%, rgba(147,51,234,0.18) 100%)"}
+            bgDim={0.25}
+          >
             <CardHeader>
               <h3 className="text-xl font-semibold text-white mb-2">About Me</h3>
             </CardHeader>
@@ -21,7 +26,14 @@ export default function Home() {
             </CardFooter>
           </Card>
 
-          <Card variant="elevated" className="float" style={{ animationDelay: '1s' }}>
+          <Card
+            variant="elevated"
+            className="float"
+            style={{ animationDelay: '1s' }}
+            bgImageUrl={"https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"}
+            bgOpacity={0.22}
+            bgDim={0.35}
+          >
             <CardHeader>
               <h3 className="text-xl font-semibold text-white mb-2">Current Focus</h3>
             </CardHeader>
@@ -38,7 +50,13 @@ export default function Home() {
             </CardContent>
           </Card>
 
-          <Card variant="outlined" className="float" style={{ animationDelay: '2s' }}>
+          <Card
+            variant="outlined"
+            className="float"
+            style={{ animationDelay: '2s' }}
+            bg={"linear-gradient(135deg, transparent 0%, transparent 60%, rgba(255,255,255,0.06) 80%, rgba(59,130,246,0.12) 100%)"}
+            bgDim={0.15}
+          >
             <CardHeader>
               <h3 className="text-xl font-semibold text-white mb-2">Quick Stats</h3>
             </CardHeader>
@@ -65,7 +83,12 @@ export default function Home() {
       {/* Education Section */}
       <Section title="Education" subtitle="My academic journey and professional development">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card variant="default">
+          <Card
+            variant="default"
+            bgImageUrl={"https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"}
+            bgOpacity={0.18}
+            bgDim={0.4}
+          >
             <CardHeader>
               <h3 className="text-lg font-semibold text-white">Gymnasium Zwiesel</h3>
               <p className="text-gray-400 text-sm">High School Education</p>
@@ -77,7 +100,12 @@ export default function Home() {
             </CardContent>
           </Card>
 
-          <Card variant="default">
+          <Card
+            variant="default"
+            bgImageUrl={"https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"}
+            bgOpacity={0.2}
+            bgDim={0.35}
+          >
             <CardHeader>
               <h3 className="text-lg font-semibold text-white">University of Passau</h3>
               <p className="text-gray-400 text-sm">Higher Education</p>
@@ -154,7 +182,13 @@ export default function Home() {
       {/* Portfolio Section */}
       <Section title="Featured Projects" subtitle="Some of my notable work and contributions">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card variant="glass" className="hover:neon-glow">
+          <Card
+            variant="glass"
+            className="hover:neon-glow"
+            bgImageUrl={"https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"}
+            bgOpacity={0.25}
+            bgDim={0.3}
+          >
             <CardHeader>
               <h3 className="text-lg font-semibold text-white">Raytracing in a Weekend</h3>
               <p className="text-gray-400 text-sm">Graphics Programming</p>
@@ -196,7 +230,13 @@ export default function Home() {
             </CardFooter>
           </Card>
 
-          <Card variant="glass" className="hover:neon-glow">
+          <Card
+            variant="glass"
+            className="hover:neon-glow"
+            bgImageUrl={"https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"}
+            bgOpacity={0.2}
+            bgDim={0.4}
+          >
             <CardHeader>
               <h3 className="text-lg font-semibold text-white">6502 Emulator</h3>
               <p className="text-gray-400 text-sm">System Programming</p>
@@ -217,7 +257,13 @@ export default function Home() {
             </CardFooter>
           </Card>
 
-          <Card variant="glass" className="hover:neon-glow">
+          <Card
+            variant="glass"
+            className="hover:neon-glow"
+            bgImageUrl={"https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"}
+            bgOpacity={0.22}
+            bgDim={0.35}
+          >
             <CardHeader>
               <h3 className="text-lg font-semibold text-white">Brainfuck RS</h3>
               <p className="text-gray-400 text-sm">Language Implementation</p>
