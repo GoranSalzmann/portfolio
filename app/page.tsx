@@ -332,29 +332,7 @@ export default function Home() {
       </Section>
 
       {/* Contact Section */}
-      <Section title="Get In Touch" subtitle="Let's connect and discuss opportunities">
-        <div className="max-w-2xl mx-auto">
-          <Card variant="glass" className="text-center">
-            <CardContent>
-              <p className="text-gray-300 mb-6 text-lg">
-                I'm always interested in new opportunities and collaborations.
-                Feel free to reach out!
-              </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <Button variant="primary" size="lg">
-                  Email: example@example.com
-                </Button>
-                <Button variant="outline" size="lg">
-                  LinkedIn Profile
-                </Button>
-                <Button variant="outline" size="lg">
-                  GitHub Profile
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </Section>
+      <Section title="Get In Touch" subtitle="Let's connect and discuss opportunities"/>
     </main>
   );
 }
