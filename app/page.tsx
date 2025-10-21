@@ -16,14 +16,22 @@ export default function Home() {
               <h3 className="text-xl font-semibold text-white mb-2">About Me</h3>
             </CardHeader>
             <CardContent>
-              <p className="text-gray-300 leading-relaxed">
-                Passionate developer with expertise in full-stack development,
-                system programming, and modern web technologies.
-              </p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                <Badge variant="default">Default</Badge>
+                <Badge variant="success">Success</Badge>
+                <Badge variant="info">Info</Badge>
+                <Badge variant="warning">Warning</Badge>
+                <Badge variant="error">Error</Badge>
+                <Badge variant="glass">Glass</Badge>
+              </div>
+              <div className="flex flex-wrap gap-2 mb-4">
+                <Button variant="primary" size="sm">Learn More</Button>
+                <Button variant="secondary" size="sm">Learn More</Button>
+                <Button variant="outline" size="sm">Learn More</Button>
+                <Button variant="glass" size="sm">Learn More</Button>
+                <Button variant="ghost" size="sm">Learn More</Button>
+              </div>
             </CardContent>
-            <CardFooter>
-              <Button variant="glass" size="sm">Learn More</Button>
-            </CardFooter>
           </Card>
 
           <Card
@@ -120,7 +128,7 @@ export default function Home() {
       </Section>
 
       {/* Skills Section */}
-      <Section title="Skills & Expertise" subtitle="Technical capabilities and professional skills">
+      <Section variant="feature" title="Skills & Expertise" subtitle="Technical capabilities and professional skills">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <Card variant="elevated">
             <CardHeader>
@@ -180,7 +188,7 @@ export default function Home() {
       </Section>
 
       {/* Portfolio Section */}
-      <Section title="Featured Projects" subtitle="Some of my notable work and contributions">
+      <Section variant="feature" title="Featured Projects" subtitle="Some of my notable work and contributions">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Card
             variant="glass"
@@ -332,7 +340,7 @@ export default function Home() {
       </Section>
 
       {/* Contact Section */}
-      <Section title="Get In Touch" subtitle="Let's connect and discuss opportunities"/>
+      <Section variant="minimal" title="Get In Touch" subtitle="Let's connect and discuss opportunities"/>
     </main>
   );
 }

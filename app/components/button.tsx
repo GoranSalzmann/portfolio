@@ -33,10 +33,6 @@ export default function Button({
     return (
         <button
             className={`${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`}
-            style={{
-                transform: 'translateZ(0)',
-                willChange: 'transform'
-            }}
             {...props}
         >
             {children}

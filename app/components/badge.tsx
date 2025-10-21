@@ -33,10 +33,6 @@ export default function Badge({
     return (
         <span
             className={`${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`}
-            style={{
-                transform: 'translateZ(0)',
-                willChange: 'transform'
-            }}
         >
             {children}
         </span>
