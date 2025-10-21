@@ -19,7 +19,7 @@ export default function Card({
     hover = true,
     style,
     bgImageUrl,
-    bgOpacity = 0.25,
+    bgOpacity = 0.15,
     bgDim = 0.35,
     bg
 }: CardProps) {
@@ -54,19 +54,10 @@ export default function Card({
                         style={{
                             ...(bg
                                 ? { background: bg }
-                                : { backgroundImage: `url(${bgImageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center', opacity: bgOpacity }
+                                : { backgroundImage: `url(${bgImageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center', opacity: bgOpacity, filter: `brightness(${bgDim})`,zIndex: -1 }
                             ),
                             opacity: bg ? 1 : bgOpacity,
                             // Diagonal mask: from ~20% at bottom to ~55% at top to create a rising diagonal
-                            clipPath: 'polygon(55% 0, 100% 0, 100% 100%, 20% 100%)'
-                        }}
-                    />
-                    {/* Dimming overlay to preserve contrast over the image area only */}
-                    <div
-                        aria-hidden
-                        className="pointer-events-none absolute inset-0"
-                        style={{
-                            background: 'rgba(0,0,0,' + bgDim + ')',
                             clipPath: 'polygon(55% 0, 100% 0, 100% 100%, 20% 100%)'
                         }}
                     />

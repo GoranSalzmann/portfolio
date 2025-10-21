@@ -31,7 +31,7 @@ export default function Home() {
             className="float"
             style={{ animationDelay: '1s' }}
             bgImageUrl={"https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"}
-            bgOpacity={0.22}
+            bgOpacity={0.35}
             bgDim={0.35}
           >
             <CardHeader>
@@ -86,8 +86,8 @@ export default function Home() {
           <Card
             variant="default"
             bgImageUrl={"https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"}
-            bgOpacity={0.18}
-            bgDim={0.4}
+            bgOpacity={0.35}
+            bgDim={0.35}
           >
             <CardHeader>
               <h3 className="text-lg font-semibold text-white">Gymnasium Zwiesel</h3>
@@ -103,7 +103,7 @@ export default function Home() {
           <Card
             variant="default"
             bgImageUrl={"https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"}
-            bgOpacity={0.2}
+            bgOpacity={0.35}
             bgDim={0.35}
           >
             <CardHeader>
@@ -186,8 +186,8 @@ export default function Home() {
             variant="glass"
             className="hover:neon-glow"
             bgImageUrl={"https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"}
-            bgOpacity={0.25}
-            bgDim={0.3}
+            bgOpacity={0.35}
+            bgDim={0.35}
           >
             <CardHeader>
               <h3 className="text-lg font-semibold text-white">Raytracing in a Weekend</h3>
@@ -234,8 +234,8 @@ export default function Home() {
             variant="glass"
             className="hover:neon-glow"
             bgImageUrl={"https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"}
-            bgOpacity={0.2}
-            bgDim={0.4}
+            bgOpacity={0.35}
+            bgDim={0.35}
           >
             <CardHeader>
               <h3 className="text-lg font-semibold text-white">6502 Emulator</h3>
@@ -261,7 +261,7 @@ export default function Home() {
             variant="glass"
             className="hover:neon-glow"
             bgImageUrl={"https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"}
-            bgOpacity={0.22}
+            bgOpacity={0.35}
             bgDim={0.35}
           >
             <CardHeader>
