@@ -33,9 +33,11 @@ export default function FootBar() {
               </div>
             </div>
             <p className="text-gray-300 mb-6 max-w-md leading-relaxed">
-              Leidenschaftlicher Entwickler auf der Suche nach neuen Möglichkeiten.
-              <i> Always learning, always building.</i>
+              Leidenschaftlicher Entwickler, stets auf der Suche nach neuen Möglichkeiten.
             </p>
+              <p className="mt-4 bg-gradient-to-r from-yellow-400 to-indigo-600 bg-clip-text text-transparent">
+                <i> Always learning, always building.</i>
+              </p>
           </div>
 
           {/* Quick Links */}

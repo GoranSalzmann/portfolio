@@ -93,10 +93,10 @@ export default function Home() {
             <CardContent>
               <div className="space-y-3">
                 <div className="flex flex-wrap gap-2">
-                  <Badge variant="info">JavaScript</Badge>
-                  <Badge variant="info">Rust</Badge>
-                  <Badge variant="info">Java</Badge>
-                  <Badge variant="info">C#</Badge>
+                  <Badge variant="blue">JavaScript</Badge>
+                  <Badge variant="blue">Rust</Badge>
+                  <Badge variant="blue">Java</Badge>
+                  <Badge variant="blue">C#</Badge>
                 </div>
                 <p className="text-gray-300 text-sm">
                   Webentwicklung und Systementwicklung
@@ -112,9 +112,9 @@ export default function Home() {
             <CardContent>
               <div className="space-y-3">
                 <div className="flex flex-wrap gap-2">
-                  <Badge variant="success">Hardware</Badge>
-                  <Badge variant="success">Virtualisierung</Badge>
-                  <Badge variant="success">Networking</Badge>
+                  <Badge variant="green">Hardware</Badge>
+                  <Badge variant="green">Virtualisierung</Badge>
+                  <Badge variant="green">Networking</Badge>
                 </div>
                 <p className="text-gray-300 text-sm">
                   Self-Hosting
@@ -130,8 +130,8 @@ export default function Home() {
             <CardContent>
               <div className="space-y-3">
                 <div className="flex flex-wrap gap-2">
-                  <Badge variant="warning">Projektmanagement</Badge>
-                  <Badge variant="warning">Layer 8  ^^</Badge>
+                  <Badge variant="yellow">Projektmanagement</Badge>
+                  <Badge variant="yellow">Layer 8  ^^</Badge>
                 </div>
                 <p className="text-gray-300 text-sm">
                   Erfahrung im professionellen Umgang mit internen und externen Kunden
@@ -158,9 +158,9 @@ export default function Home() {
                 Ein Nachbau des Raytracers aus der Buchserie "Raytracing in a Weekend". Portiert von C++ auf Rust.
               </p>
               <div className="flex flex-wrap gap-2">
-                <Badge variant="info">Rust</Badge>
-                <Badge variant="info">Graphics</Badge>
-                <Badge variant="info">Math</Badge>
+                <Badge variant="blue">Rust</Badge>
+                <Badge variant="blue">Graphics</Badge>
+                <Badge variant="blue">Math</Badge>
               </div>
             </CardContent>
             <CardFooter>
@@ -182,9 +182,9 @@ export default function Home() {
                 Alle Instruktionen und Addressierungsmodi auf einzelne Taktzyklen genau simuliert.
               </p>
               <div className="flex flex-wrap gap-2">
-                <Badge variant="info">Emulation</Badge>
-                <Badge variant="info">Low-level</Badge>
-                <Badge variant="info">Hardware</Badge>
+                <Badge variant="blue">Emulation</Badge>
+                <Badge variant="blue">Low-level</Badge>
+                <Badge variant="blue">Hardware</Badge>
               </div>
             </CardContent>
             <CardFooter>
