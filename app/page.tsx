@@ -9,6 +9,7 @@ export default function Home() {
           <Card
             variant="glass"
             className="float"
+            hover
           >
             <CardHeader>
               <h3 className="text-xl font-semibold text-white mb-2">Über mich</h3>
@@ -21,8 +22,9 @@ export default function Home() {
           </Card>
 
           <Card
-            variant="elevated"
+            variant="default"
             className="float"
+            hover
             style={{ animationDelay: '1s' }}
           >
             <CardHeader>
@@ -37,6 +39,7 @@ export default function Home() {
           <Card
             variant="outlined"
             className="float"
+            hover
             style={{ animationDelay: '2s' }}
           >
             <CardHeader>
@@ -86,7 +89,7 @@ export default function Home() {
       {/* Skills Section */}
       <Section variant="feature" title="Erfahrung" subtitle="Technisches Wissen und Skills">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Card variant="elevated">
+          <Card variant="outlined">
             <CardHeader>
               <h3 className="text-lg font-semibold text-white mb-3">Anwendungsentwicklung</h3>
             </CardHeader>
@@ -105,7 +108,7 @@ export default function Home() {
             </CardContent>
           </Card>
 
-          <Card variant="elevated">
+          <Card variant="outlined">
             <CardHeader>
               <h3 className="text-lg font-semibold text-white mb-3">Sytemintegration</h3>
             </CardHeader>
@@ -123,7 +126,7 @@ export default function Home() {
             </CardContent>
           </Card>
 
-          <Card variant="elevated">
+          <Card variant="outlined">
             <CardHeader>
               <h3 className="text-lg font-semibold text-white mb-3">Soft Skills</h3>
             </CardHeader>

@@ -49,24 +49,6 @@ body::before {
   z-index: -1;
 }
 
-/* Enhanced scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #111111;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #333333;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555555;
-}
-
 /* 3D Effects */
 .glass-effect {
   backdrop-filter: blur(16px);
