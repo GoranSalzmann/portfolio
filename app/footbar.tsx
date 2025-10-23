@@ -12,7 +12,6 @@ export default function FootBar() {
   ];
 
   const quickLinks = [
-    { name: "Home", href: "/" },
     { name: "Lebenslauf", href: "/cv" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "Kontakt", href: "/contact" }
@@ -20,13 +19,6 @@ export default function FootBar() {
 
   return (
     <footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border-t border-gray-800/50">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
-      </div>
-
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
@@ -37,19 +29,13 @@ export default function FootBar() {
               </div>
               <div>
                 <h3 className="text-xl font-bold text-white">Mike Karl</h3>
-                <p className="text-gray-400 text-sm">Fullstack Developer</p>
+                <p className="text-gray-400 text-sm">Web und Systementwickler</p>
               </div>
             </div>
             <p className="text-gray-300 mb-6 max-w-md leading-relaxed">
-              Passionate developer creating modern web applications with cutting-edge technologies.
-              Always learning, always building.
+              Leidenschaftlicher Entwickler auf der Suche nach neuen Möglichkeiten.
+              <i> Always learning, always building.</i>
             </p>
-            <div className="flex flex-wrap gap-2">
-              <Badge variant="info">React</Badge>
-              <Badge variant="info">TypeScript</Badge>
-              <Badge variant="info">Rust</Badge>
-              <Badge variant="success">Next.js</Badge>
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -71,7 +57,7 @@ export default function FootBar() {
 
           {/* Social Links */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-4">Connect</h4>
+            <h4 className="text-lg font-semibold text-white mb-4">Kontakt</h4>
             <div className="space-y-3">
               {socialLinks.map((social) => (
                 <a
@@ -106,7 +92,7 @@ export default function FootBar() {
                 size="sm"
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               >
-                Back to Top
+                zum Seitenanfang
               </Button>
             </div>
           </div>

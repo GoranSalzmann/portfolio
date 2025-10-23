@@ -8,7 +8,6 @@ export default function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const navItems = [
-        { href: "/", label: "Home" },
         { href: "/cv", label: "Lebenslauf" },
         { href: "/portfolio", label: "Portfolio" },
         { href: "/contact", label: "Kontakt" }

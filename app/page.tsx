@@ -4,33 +4,19 @@ export default function Home() {
   return (
     <main className="pt-16">
       {/* Hero Section */}
-      <Section variant="hero" title="Mike Karl" subtitle="Fullstack Developer / Web Developer / System Developer">
+      <Section variant="hero" title="Mike Karl" subtitle="Fullstack Web und Systementwickler">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <Card
             variant="glass"
             className="float"
-            bg={"linear-gradient(135deg, transparent 0%, transparent 55%, rgba(59,130,246,0.15) 70%, rgba(147,51,234,0.18) 100%)"}
-            bgDim={0.25}
           >
             <CardHeader>
-              <h3 className="text-xl font-semibold text-white mb-2">About Me</h3>
+              <h3 className="text-xl font-semibold text-white mb-2">Über mich</h3>
             </CardHeader>
             <CardContent>
-              <div className="flex flex-wrap gap-2 mb-4">
-                <Badge variant="default">Default</Badge>
-                <Badge variant="success">Success</Badge>
-                <Badge variant="info">Info</Badge>
-                <Badge variant="warning">Warning</Badge>
-                <Badge variant="error">Error</Badge>
-                <Badge variant="glass">Glass</Badge>
-              </div>
-              <div className="flex flex-wrap gap-2 mb-4">
-                <Button variant="primary" size="sm">Learn More</Button>
-                <Button variant="secondary" size="sm">Learn More</Button>
-                <Button variant="outline" size="sm">Learn More</Button>
-                <Button variant="glass" size="sm">Learn More</Button>
-                <Button variant="ghost" size="sm">Learn More</Button>
-              </div>
+              <p className="text-gray-300">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut ex, labore deleniti fuga repellendus maiores rerum, voluptates dicta accusamus nihil quibusdam dolorum dolor illo et corrupti doloremque velit itaque repudiandae!
+                </p>
             </CardContent>
           </Card>
 
@@ -38,89 +24,59 @@ export default function Home() {
             variant="elevated"
             className="float"
             style={{ animationDelay: '1s' }}
-            bgImageUrl={"https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"}
-            bgOpacity={0.35}
-            bgDim={0.35}
           >
             <CardHeader>
-              <h3 className="text-xl font-semibold text-white mb-2">Current Focus</h3>
+              <h3 className="text-xl font-semibold text-white mb-2">Aktuelle Beschäftigung</h3>
             </CardHeader>
             <CardContent>
-              <div className="flex flex-wrap gap-2 mb-4">
-                <Badge variant="info">React</Badge>
-                <Badge variant="info">TypeScript</Badge>
-                <Badge variant="info">Rust</Badge>
-                <Badge variant="success">Next.js</Badge>
-              </div>
-              <p className="text-gray-300 text-sm">
-                Building modern web applications with cutting-edge technologies.
-              </p>
-            </CardContent>
+              <p className="text-gray-300">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere similique iusto beatae minima ea. Explicabo voluptatem itaque unde sequi, aperiam, dicta nulla nobis maiores, debitis aliquam corrupti quam earum dolor!
+            </p></CardContent>
           </Card>
 
           <Card
             variant="outlined"
             className="float"
             style={{ animationDelay: '2s' }}
-            bg={"linear-gradient(135deg, transparent 0%, transparent 60%, rgba(255,255,255,0.06) 80%, rgba(59,130,246,0.12) 100%)"}
-            bgDim={0.15}
           >
             <CardHeader>
-              <h3 className="text-xl font-semibold text-white mb-2">Quick Stats</h3>
+              <h3 className="text-xl font-semibold text-white mb-2">Erfahrung</h3>
             </CardHeader>
             <CardContent>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span className="text-gray-400">Experience</span>
-                  <span className="text-white font-medium">5+ years</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-400">Projects</span>
-                  <span className="text-white font-medium">50+</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-400">Languages</span>
-                  <span className="text-white font-medium">10+</span>
-                </div>
-              </div>
-            </CardContent>
+              <p className="text-gray-300">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi distinctio neque natus quibusdam? Corrupti reprehenderit nisi repellendus facere, reiciendis, rerum, error iusto doloribus asperiores sapiente alias repellat autem? Earum, possimus?
+            </p></CardContent>
           </Card>
         </div>
       </Section>
 
       {/* Education Section */}
-      <Section title="Education" subtitle="My academic journey and professional development">
+      <Section title="Bildung" subtitle="Meine akademische Laufbahn und professionelle Entwicklung">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Card
             variant="default"
-            bgImageUrl={"https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"}
-            bgOpacity={0.35}
-            bgDim={0.35}
           >
             <CardHeader>
               <h3 className="text-lg font-semibold text-white">Gymnasium Zwiesel</h3>
-              <p className="text-gray-400 text-sm">High School Education</p>
+              <p className="text-gray-400 text-sm">Weiterführende Schule</p>
             </CardHeader>
             <CardContent>
               <p className="text-gray-300">
-                Foundation in mathematics, sciences, and critical thinking skills.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum amet porro cumque dolores eveniet sunt labore, vitae ipsam consectetur nisi alias odio temporibus! Mollitia nisi, similique eos quam saepe deleniti!
               </p>
             </CardContent>
           </Card>
 
           <Card
             variant="default"
-            bgImageUrl={"https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"}
-            bgOpacity={0.35}
-            bgDim={0.35}
           >
             <CardHeader>
-              <h3 className="text-lg font-semibold text-white">University of Passau</h3>
-              <p className="text-gray-400 text-sm">Higher Education</p>
+              <h3 className="text-lg font-semibold text-white">Universität Passau</h3>
+              <p className="text-gray-400 text-sm">Universität</p>
             </CardHeader>
             <CardContent>
               <p className="text-gray-300">
-                Advanced studies in computer science and software engineering.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, cumque excepturi voluptates qui repellendus omnis animi ab placeat ullam soluta error aspernatur repellat. Repellat, omnis facilis sequi perferendis aliquam expedita?
               </p>
             </CardContent>
           </Card>
@@ -128,22 +84,22 @@ export default function Home() {
       </Section>
 
       {/* Skills Section */}
-      <Section variant="feature" title="Skills & Expertise" subtitle="Technical capabilities and professional skills">
+      <Section variant="feature" title="Erfahrung" subtitle="Technisches Wissen und Skills">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <Card variant="elevated">
             <CardHeader>
-              <h3 className="text-lg font-semibold text-white mb-3">Programming Languages</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">Anwendungsentwicklung</h3>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
                 <div className="flex flex-wrap gap-2">
                   <Badge variant="info">JavaScript</Badge>
-                  <Badge variant="info">TypeScript</Badge>
                   <Badge variant="info">Rust</Badge>
-                  <Badge variant="info">Python</Badge>
+                  <Badge variant="info">Java</Badge>
+                  <Badge variant="info">C#</Badge>
                 </div>
                 <p className="text-gray-300 text-sm">
-                  Web, System, Functional, and Desktop development
+                  Webentwicklung und Systementwicklung
                 </p>
               </div>
             </CardContent>
@@ -151,17 +107,17 @@ export default function Home() {
 
           <Card variant="elevated">
             <CardHeader>
-              <h3 className="text-lg font-semibold text-white mb-3">IT Infrastructure</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">Sytemintegration</h3>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
                 <div className="flex flex-wrap gap-2">
-                  <Badge variant="success">Virtualization</Badge>
+                  <Badge variant="success">Hardware</Badge>
+                  <Badge variant="success">Virtualisierung</Badge>
                   <Badge variant="success">Networking</Badge>
-                  <Badge variant="success">Cloud</Badge>
                 </div>
                 <p className="text-gray-300 text-sm">
-                  FISI expertise in virtualization and networking
+                  Self-Hosting
                 </p>
               </div>
             </CardContent>
@@ -174,12 +130,11 @@ export default function Home() {
             <CardContent>
               <div className="space-y-3">
                 <div className="flex flex-wrap gap-2">
-                  <Badge variant="warning">Teamwork</Badge>
-                  <Badge variant="warning">Communication</Badge>
-                  <Badge variant="warning">Leadership</Badge>
+                  <Badge variant="warning">Projektmanagement</Badge>
+                  <Badge variant="warning">Layer 8  ^^</Badge>
                 </div>
                 <p className="text-gray-300 text-sm">
-                  Strong interpersonal and collaboration skills
+                  Erfahrung im professionellen Umgang mit internen und externen Kunden
                 </p>
               </div>
             </CardContent>
@@ -188,14 +143,11 @@ export default function Home() {
       </Section>
 
       {/* Portfolio Section */}
-      <Section variant="feature" title="Featured Projects" subtitle="Some of my notable work and contributions">
+      <Section variant="feature" title="Portfolio" subtitle="Einige meiner Projekte (allein und im Team)">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Card
             variant="glass"
             className="hover:neon-glow"
-            bgImageUrl={"https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"}
-            bgOpacity={0.35}
-            bgDim={0.35}
           >
             <CardHeader>
               <h3 className="text-lg font-semibold text-white">Raytracing in a Weekend</h3>
@@ -203,8 +155,7 @@ export default function Home() {
             </CardHeader>
             <CardContent>
               <p className="text-gray-300 mb-4">
-                A complete raytracing implementation built from scratch,
-                demonstrating advanced graphics programming concepts.
+                Ein Nachbau des Raytracers aus der Buchserie "Raytracing in a Weekend". Portiert von C++ auf Rust.
               </p>
               <div className="flex flex-wrap gap-2">
                 <Badge variant="info">Rust</Badge>
@@ -213,37 +164,13 @@ export default function Home() {
               </div>
             </CardContent>
             <CardFooter>
-              <Button variant="outline" size="sm">View Project</Button>
-            </CardFooter>
-          </Card>
-
-          <Card variant="glass" className="hover:neon-glow">
-            <CardHeader>
-              <h3 className="text-lg font-semibold text-white">Interpreter Book</h3>
-              <p className="text-gray-400 text-sm">Language Implementation</p>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-300 mb-4">
-                A comprehensive guide to building programming language interpreters,
-                covering lexing, parsing, and execution.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <Badge variant="info">Compiler</Badge>
-                <Badge variant="info">Education</Badge>
-                <Badge variant="info">Documentation</Badge>
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Button variant="outline" size="sm">Read More</Button>
+              <Button variant="outline" size="sm">zum Code</Button>
             </CardFooter>
           </Card>
 
           <Card
             variant="glass"
             className="hover:neon-glow"
-            bgImageUrl={"https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"}
-            bgOpacity={0.35}
-            bgDim={0.35}
           >
             <CardHeader>
               <h3 className="text-lg font-semibold text-white">6502 Emulator</h3>
@@ -251,8 +178,8 @@ export default function Home() {
             </CardHeader>
             <CardContent>
               <p className="text-gray-300 mb-4">
-                A complete emulator for the 6502 microprocessor,
-                implementing all instructions and addressing modes.
+                Vollständiger Emulator des 6502 Mikroprozessors geschrieben in Rust.
+                Alle Instruktionen und Addressierungsmodi auf einzelne Taktzyklen genau simuliert.
               </p>
               <div className="flex flex-wrap gap-2">
                 <Badge variant="info">Emulation</Badge>
@@ -261,59 +188,32 @@ export default function Home() {
               </div>
             </CardContent>
             <CardFooter>
-              <Button variant="outline" size="sm">Try Demo</Button>
-            </CardFooter>
-          </Card>
-
-          <Card
-            variant="glass"
-            className="hover:neon-glow"
-            bgImageUrl={"https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"}
-            bgOpacity={0.35}
-            bgDim={0.35}
-          >
-            <CardHeader>
-              <h3 className="text-lg font-semibold text-white">Brainfuck RS</h3>
-              <p className="text-gray-400 text-sm">Language Implementation</p>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-300 mb-4">
-                A high-performance Brainfuck interpreter written in Rust,
-                showcasing optimization techniques and language design.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <Badge variant="info">Rust</Badge>
-                <Badge variant="info">Performance</Badge>
-                <Badge variant="info">Optimization</Badge>
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Button variant="outline" size="sm">View Code</Button>
+              <Button variant="outline" size="sm">zum Code</Button>
             </CardFooter>
           </Card>
         </div>
       </Section>
 
       {/* Personal Section */}
-      <Section title="Personal Life" subtitle="Beyond code and technology">
+      <Section title="Persönliches" subtitle="Über die Arbeit hinaus">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Card variant="default">
             <CardHeader>
-              <h3 className="text-lg font-semibold text-white">Hobbies & Interests</h3>
+              <h3 className="text-lg font-semibold text-white">Hobbies</h3>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                  <span className="text-gray-300">Motorcycle Riding</span>
+                  <span className="text-gray-300">Motorradfahren</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                  <span className="text-gray-300">Astrophotography</span>
+                  <span className="text-gray-300">Astrofotografie</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-300">Photography</span>
+                  <span className="text-gray-300">Elektrotechnik</span>
                 </div>
               </div>
             </CardContent>
@@ -321,16 +221,12 @@ export default function Home() {
 
           <Card variant="default">
             <CardHeader>
-              <h3 className="text-lg font-semibold text-white">Personal Status</h3>
+              <h3 className="text-lg font-semibold text-white">Persönlicher Status</h3>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                  <span className="text-gray-300">E33, LiS, etc.</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-pink-500 rounded-full pulse-glow"></div>
                   <span className="text-gray-300">Glücklich Vergeben ❤️</span>
                 </div>
               </div>
@@ -340,7 +236,7 @@ export default function Home() {
       </Section>
 
       {/* Contact Section */}
-      <Section variant="minimal" title="Get In Touch" subtitle="Let's connect and discuss opportunities"/>
+      <Section variant="minimal" title="Kontaktieren Sie mich gerne" subtitle="Sehen Sie sich meine Profile an und kontaktieren sie mich. Ich freue mich auf ein Gespräch mit Ihnen." />
     </main>
   );
 }
