@@ -66,7 +66,7 @@ export default function Navbar() {
                 {/* Mobile Menu */}
                 <div className={`md:hidden transition-all duration-300 overflow-hidden ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                     }`}>
-                    <div className="py-4 space-y-2 border-t border-gray-800/50">
+                    <div className="py-6 space-y-2 border-t border-stone-950 border-b">
                         {navItems.map((item) => (
                             <Link
                                 key={item.href}
@@ -77,11 +77,6 @@ export default function Navbar() {
                                 {item.label}
                             </Link>
                         ))}
-                        <div className="pt-4">
-                            <Button variant="glass" size="sm" className="w-full">
-                                Get in Touch
-                            </Button>
-                        </div>
                     </div>
                 </div>
             </div>

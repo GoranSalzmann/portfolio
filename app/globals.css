@@ -16,6 +16,7 @@ body {
 
 .polka{
   overflow: hidden;
+  will-change: transform;
 }
 
 .polka::before{

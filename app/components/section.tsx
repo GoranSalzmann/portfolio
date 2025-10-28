@@ -19,7 +19,7 @@ export default function Section({
 
     const variantClasses = {
         default: "bg-stone-900",
-        hero: "polka pt-20 lg:pt-40",
+        hero: "polka pt-32 lg:pt-40",
         minimal: "bg-transparent"
     };
 
