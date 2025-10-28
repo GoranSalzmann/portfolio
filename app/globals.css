@@ -15,12 +15,24 @@ body {
 }
 
 .polka{
+  overflow: hidden;
+}
+
+.polka::before{
+  content: "";
+  position: absolute;
+  width: 10000%;
+  height: 10000%;
+  top: -5000%;
+  left: -5000%;
+  z-index: -1;
   background-image: radial-gradient(#0c0a09 20%, #292524 22%);
   background-size: 80px 80px;
   animation-name: background_keyframes;
   animation-duration: 8s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
+  transform: rotate(30deg);
 }
 
 @keyframes background_keyframes {
