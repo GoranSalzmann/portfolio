@@ -14,7 +14,7 @@ export default function Card({
 
     const variantClasses = {
         default: "bg-gradient-to-br bg-gradient-to-br from-stone-800 via-stone-900 to-stone-800 border border-stone-700",
-        glass: "bg-gradient-to-br bg-gradient-to-br from-white/5 via-white/10 to-white/5 border border-white/10 backdrop-blur-md",
+        glass: "bg-gradient-to-br bg-gradient-to-br from-white/5 via-white/10 to-white/5 border border-white/10 backdrop-blur-sm",
         outlined: "bg-transparent border-2 border-stone-700/50"
     };
 

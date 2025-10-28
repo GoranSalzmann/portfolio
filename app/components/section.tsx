@@ -19,17 +19,13 @@ export default function Section({
 
     const variantClasses = {
         default: "bg-stone-900",
-        hero: "bg-gradient-to-br from-stone-950 via-stone-900 to-stone-950",
+        hero: "polka lg:pt-40",
         minimal: "bg-transparent"
     };
 
     return (
         <section
             className={`${baseClasses} ${variantClasses[variant]} ${className}`}
-            style={{
-                transform: 'translateZ(0)',
-                willChange: 'transform'
-            }}
         >
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 {(title || subtitle) && (
