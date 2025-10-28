@@ -23,18 +23,19 @@ body {
 .polka::before{
   content: "";
   position: absolute;
-  width: 10000%;
-  height: 10000%;
-  top: -5000%;
-  left: -5000%;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
   z-index: -1;
-  background-image: radial-gradient(#0c0a09 20%, #292524 22%);
+  background-image: radial-gradient(#0c0a09b5 20%, #292524 22%);
   background-size: 80px 80px;
   animation-name: background_keyframes;
-  animation-duration: 8s;
+  animation-duration: 10s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
-  transform: rotate(30deg);
+  transform: rotate(35deg) scale(2);
+  contain: paint;
 }
 
 @keyframes background_keyframes {
