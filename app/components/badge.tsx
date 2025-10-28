@@ -4,14 +4,12 @@ interface BadgeProps {
     children: ReactNode;
     variant?: 'gray' | 'green' | 'yellow' | 'red' | 'blue' | 'glass';
     border?: boolean;
-    className?: string;
 }
 
 export default function Badge({
     children,
     variant = 'gray',
     border = false,
-    className = ''
 }: BadgeProps) {
     const baseClasses = "rounded-full px-2 py-0.5 text-sm";
 
@@ -26,7 +24,7 @@ export default function Badge({
 
     return (
         <span
-            className={` ${border?"border":""} ${baseClasses} ${variantClasses[variant]} ${className}`}
+            className={` ${border?"border":""} ${baseClasses} ${variantClasses[variant]}`}
         >
             {children}
         </span>

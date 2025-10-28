@@ -4,15 +4,12 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode;
     variant?: 'primary' | 'secondary' | 'ghost' | 'outline' | 'glass';
     size?: 'sm' | 'md' | 'lg';
-    className?: string;
 }
 
 export default function Button({
     children,
     variant = 'primary',
     size = 'md',
-    className = '',
-    ...props
 }: ButtonProps) {
     const baseClasses = "cursor-pointer font-medium rounded-lg transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 disabled:opacity-50 disabled:cursor-not-allowed";
 
@@ -32,8 +29,7 @@ export default function Button({
 
     return (
         <button
-            className={`${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`}
-            {...props}
+            className={`${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]}`}
         >
             {children}
         </button>

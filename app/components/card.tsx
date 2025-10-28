@@ -2,18 +2,13 @@ import { ReactNode } from 'react';
 
 interface CardProps {
     children: ReactNode;
-    className?: string;
     variant?: 'default' | 'glass' | 'outlined';
-    hover?: boolean;
-    style?: React.CSSProperties;
+    hoverable?: boolean;
 }
 
 export default function Card({
     children,
-    className = '',
     variant = 'default',
-    hover = false,
-    style
 }: CardProps) {
     const baseClasses = "relative overflow-hidden rounded-xl transition-all duration-300 ease-out";
 
@@ -23,17 +18,9 @@ export default function Card({
         outlined: "bg-transparent border-2 border-gray-700/50"
     };
 
-    const hoverClasses = hover
-        ? "hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/10 hover:border-blue-500/30"
-        : "";
-
     return (
         <div
-            className={`${baseClasses} ${variantClasses[variant]} ${hoverClasses} ${className}`}
-            style={{
-                willChange: 'transform',
-                ...style
-            }}
+            className={`${baseClasses} ${variantClasses[variant]}`}
         >
             {children}
         </div>
@@ -42,12 +29,11 @@ export default function Card({
 
 interface CardHeaderProps {
     children: ReactNode;
-    className?: string;
 }
 
-export function CardHeader({ children, className = '' }: CardHeaderProps) {
+export function CardHeader({ children }: CardHeaderProps) {
     return (
-        <div className={`p-6 pb-0 ${className}`}>
+        <div className={`p-6 pb-0`}>
             {children}
         </div>
     );
@@ -55,12 +41,11 @@ export function CardHeader({ children, className = '' }: CardHeaderProps) {
 
 interface CardContentProps {
     children: ReactNode;
-    className?: string;
 }
 
-export function CardContent({ children, className = '' }: CardContentProps) {
+export function CardContent({ children }: CardContentProps) {
     return (
-        <div className={`p-6 pb-4 ${className}`}>
+        <div className={`p-6 pb-4`}>
             {children}
         </div>
     );
@@ -68,12 +53,11 @@ export function CardContent({ children, className = '' }: CardContentProps) {
 
 interface CardFooterProps {
     children: ReactNode;
-    className?: string;
 }
 
-export function CardFooter({ children, className = '' }: CardFooterProps) {
+export function CardFooter({ children }: CardFooterProps) {
     return (
-        <div className={`p-6 pt-8 ${className}`}>
+        <div className={`p-6 pt-8`}>
             {children}
         </div>
     );

@@ -8,47 +8,42 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <Card
             variant="glass"
-            className="float"
-            hover
+            hoverable
           >
             <CardHeader>
               <h3 className="text-xl font-semibold text-white mb-2">Über mich</h3>
             </CardHeader>
             <CardContent>
               <p className="text-gray-300">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut ex, labore deleniti fuga repellendus maiores rerum, voluptates dicta accusamus nihil quibusdam dolorum dolor illo et corrupti doloremque velit itaque repudiandae!
-                </p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut ex, labore deleniti fuga repellendus maiores rerum, voluptates dicta accusamus nihil quibusdam dolorum dolor illo et corrupti doloremque velit itaque repudiandae!
+              </p>
             </CardContent>
           </Card>
 
           <Card
             variant="default"
-            className="float"
-            hover
-            style={{ animationDelay: '1s' }}
+            hoverable
           >
             <CardHeader>
               <h3 className="text-xl font-semibold text-white mb-2">Aktuelle Beschäftigung</h3>
             </CardHeader>
             <CardContent>
               <p className="text-gray-300">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere similique iusto beatae minima ea. Explicabo voluptatem itaque unde sequi, aperiam, dicta nulla nobis maiores, debitis aliquam corrupti quam earum dolor!
-            </p></CardContent>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere similique iusto beatae minima ea. Explicabo voluptatem itaque unde sequi, aperiam, dicta nulla nobis maiores, debitis aliquam corrupti quam earum dolor!
+              </p></CardContent>
           </Card>
 
           <Card
             variant="outlined"
-            className="float"
-            hover
-            style={{ animationDelay: '2s' }}
+            hoverable
           >
             <CardHeader>
               <h3 className="text-xl font-semibold text-white mb-2">Erfahrung</h3>
             </CardHeader>
             <CardContent>
               <p className="text-gray-300">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi distinctio neque natus quibusdam? Corrupti reprehenderit nisi repellendus facere, reiciendis, rerum, error iusto doloribus asperiores sapiente alias repellat autem? Earum, possimus?
-            </p></CardContent>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi distinctio neque natus quibusdam? Corrupti reprehenderit nisi repellendus facere, reiciendis, rerum, error iusto doloribus asperiores sapiente alias repellat autem? Earum, possimus?
+              </p></CardContent>
           </Card>
         </div>
       </Section>
@@ -150,7 +145,6 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Card
             variant="glass"
-            className="hover:neon-glow"
           >
             <CardHeader>
               <h3 className="text-lg font-semibold text-white">Raytracing in a Weekend</h3>
@@ -173,7 +167,6 @@ export default function Home() {
 
           <Card
             variant="glass"
-            className="hover:neon-glow"
           >
             <CardHeader>
               <h3 className="text-lg font-semibold text-white">6502 Emulator</h3>
