@@ -64,7 +64,7 @@ export default function Navbar() {
                 </div>
 
                 {/* Mobile Menu */}
-                <div className={`md:hidden transition-all duration-300 overflow-hidden ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                <div className={`will-change-transform md:hidden transition-all duration-300 overflow-hidden ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                     }`}>
                     <div className="py-6 space-y-2 border-t border-stone-950 border-b">
                         {navItems.map((item) => (
