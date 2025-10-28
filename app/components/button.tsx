@@ -11,7 +11,7 @@ export default function Button({
     variant = 'primary',
     size = 'md',
 }: ButtonProps) {
-    const baseClasses = "cursor-pointer font-medium rounded-lg transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 disabled:opacity-50 disabled:cursor-not-allowed";
+    const baseClasses = "cursor-pointer font-medium rounded-lg transition-all duration-300 ease-out disabled:opacity-50 disabled:cursor-not-allowed";
 
     const sizeClasses = {
         sm: "px-3 py-1.5 text-sm",

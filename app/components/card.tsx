@@ -13,9 +13,9 @@ export default function Card({
     const baseClasses = "relative overflow-hidden rounded-xl transition-all duration-300 ease-out";
 
     const variantClasses = {
-        default: "bg-gray-900/50 border border-gray-800/50 backdrop-blur-sm",
-        glass: "bg-white/5 border border-white/10 backdrop-blur-md",
-        outlined: "bg-transparent border-2 border-gray-700/50"
+        default: "bg-gradient-to-br bg-gradient-to-br from-stone-800 via-stone-900 to-stone-800 border border-stone-700",
+        glass: "bg-gradient-to-br bg-gradient-to-br from-white/5 via-white/10 to-white/5 border border-white/10 backdrop-blur-md",
+        outlined: "bg-transparent border-2 border-stone-700/50"
     };
 
     return (

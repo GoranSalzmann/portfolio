@@ -2,7 +2,7 @@ import { Section, Card, CardHeader, CardContent, CardFooter, Button, Badge } fro
 
 export default function Home() {
   return (
-    <main className="pt-16">
+    <main>
       {/* Hero Section */}
       <Section variant="hero" title="Mike Karl" subtitle="Fullstack Web und Systementwickler">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -82,7 +82,7 @@ export default function Home() {
       </Section>
 
       {/* Skills Section */}
-      <Section variant="feature" title="Erfahrung" subtitle="Technisches Wissen und Skills">
+      <Section title="Erfahrung" subtitle="Technisches Wissen und Skills">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <Card variant="outlined">
             <CardHeader>
@@ -141,7 +141,7 @@ export default function Home() {
       </Section>
 
       {/* Portfolio Section */}
-      <Section variant="feature" title="Portfolio" subtitle="Einige meiner Projekte (allein und im Team)">
+      <Section title="Portfolio" subtitle="Einige meiner Projekte (allein und im Team)">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Card
             variant="glass"

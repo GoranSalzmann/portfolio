@@ -5,7 +5,7 @@ interface SectionProps {
     title?: string;
     subtitle?: string;
     className?: string;
-    variant?: 'default' | 'hero' | 'feature' | 'minimal';
+    variant?: 'default' | 'hero' | 'minimal';
 }
 
 export default function Section({
@@ -18,9 +18,8 @@ export default function Section({
     const baseClasses = "relative py-16 lg:py-24";
 
     const variantClasses = {
-        default: "bg-gray-900/30",
-        hero: "bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900",
-        feature: "bg-gray-800/20",
+        default: "bg-stone-900",
+        hero: "bg-gradient-to-br from-stone-950 via-stone-900 to-stone-950",
         minimal: "bg-transparent"
     };
 
