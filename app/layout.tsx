@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "./navbar";
-import FootBar from "./footbar";
 
 export const metadata: Metadata = {
-  title: "Welcome - Mike Karl",
-  description: "Personal website of Mike Karl",
+  title: "Portfolio - Mike Karl",
 };
 
 export default function RootLayout({
@@ -14,13 +11,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`bg-stone-950`}
-      >
-        <Navbar />
+    <html lang="de">
+      <body className="bg">
+        <div className="bg1" />
+        <div className="bg2" />
         {children}
-        <FootBar />
       </body>
     </html>
   );
