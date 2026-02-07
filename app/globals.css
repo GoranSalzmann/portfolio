@@ -5,13 +5,6 @@
   box-sizing: border-box;
 }
 
-:root{
-  --primary-col: #fff;
-  --secondary-col: #000;
-  --tertiary-col-1: #c50022;
-  --tertiary-col-2: #6d001a;
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -19,32 +12,13 @@ html {
 body {
   min-height: 100vh;
   font-family: "Space Grotesk", sans-serif;
+  color: #fff;
 }
 
-.bg{
-  background: var(--tertiary-col-2);
-}
-
-.bg1{
-  background: #000;
-  background: linear-gradient(45deg, rgba(0, 0, 0, 1) 0%, rgba(245, 0, 41, 1) 100%);
-  width: 1000;
-  height: 1000;
-  position: fixed;
-  top:-500;
-  right: 50vw;
-  border-radius: 50%;
-  z-index: -999;
-}
-
-.bg2{
-  background: #6D001A;
-  background: linear-gradient(-45deg, rgba(0, 0, 0, 1) 0%, rgba(245, 0, 41, 1) 100%);
-  width: 1000;
-  height: 1000;
-  position: fixed;
-  bottom: -500;
-  left: 50vw;
-  border-radius: 50%;
-  z-index: -999;
+body{
+  background:
+    radial-gradient(circle at 0% 0%, #da0202 0%, transparent 50%),
+    radial-gradient(circle at 25% -5%, #da0202 0%, transparent 40%),
+    radial-gradient(circle at 100% 100%, #da0202 0%, transparent 40%),
+    #000
 }
