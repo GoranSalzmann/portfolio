@@ -3,7 +3,7 @@ export default function Header({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    return <header className="absolute flex justify-between w-full">
+    return <header className="fixed flex justify-between w-full z-10 backdrop-blur-sm">
         {children}
     </header>
 }
