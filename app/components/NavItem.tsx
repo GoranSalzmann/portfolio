@@ -7,7 +7,7 @@ export default function NavItem({
     children: React.ReactNode;
     href: string;
 }>) {
-    return <Link href={href} className="text-lg mx-4">
+    return <Link href={href} className="text-lg mx-4 flex">
         {children}
     </Link>
 }
