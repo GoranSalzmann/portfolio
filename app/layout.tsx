@@ -30,7 +30,9 @@ export default function RootLayout({
             <Image alt="logo.png" className="mx-4" src={logo} width={70} height={70} />
           </Link>
         </Header>
-        {children}
+        <main className="pt-20">
+          {children}
+        </main>
         <div className="bg" />
       </body>
     </html>
