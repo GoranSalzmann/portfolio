@@ -1,4 +1,6 @@
+'use client'
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function NavItem({
     children,
@@ -7,7 +9,8 @@ export default function NavItem({
     children: React.ReactNode;
     href: string;
 }>) {
-    return <Link href={href} className="text-lg mx-4 flex">
+    const highlighted = usePathname() === href;
+    return <Link href={href} className={`text-lg mx-4 flex font-semibold ${highlighted && 'underline underline-offset-8'}`}>
         {children}
     </Link>
 }
