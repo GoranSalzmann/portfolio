@@ -5,21 +5,19 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   min-height: 100vh;
   font-family: "Space Grotesk", sans-serif;
   color: #fff;
-  background-color: #500;
+  background: #000;
 }
 
 .bg{
   width: 100vw;
   height: 100vh;
-  position: fixed;
+  position: absolute;
+  top: 0;
+  left: 0;
   z-index: -999;
   background:
     radial-gradient(circle at 0% 0%, #da0202 0%, transparent 50%),
