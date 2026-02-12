@@ -9,7 +9,7 @@ export default function NavItem({
     children: React.ReactNode;
     href: string;
 }>) {
-    const highlighted = usePathname() === href;
+    const highlighted = usePathname() == href;
     return <Link href={href} className={`text-lg mx-4 flex font-semibold ${highlighted ? 'underline underline-offset-8':""} hover:scale-110 active:rotate-4`}>
         {children}
     </Link>
