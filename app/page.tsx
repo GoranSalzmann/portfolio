@@ -16,8 +16,8 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-      <section className="mx-10 mt-50 ml-50">
+    <main className="min-h-screen">
+      <section className="pl-36 pt-48">
         <h2 className="text-7xl/12 font-light">Mike</h2>
         <h1 className="text-9xl font-bold">Karl</h1>
         <AnimatePresence mode="wait">
@@ -38,7 +38,7 @@ export default function Home() {
         <Link href="https://www.linkedin.com/in/mike-karl-a58925381" className="inline-flex items-center border rounded-lg p-1.5 mt-4 w-fit mr-3 hover:scale-105 active:rotate-2 px-4">Mein LinkedIn
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="ml-2 w-8 h-8 fill-white"><path d="M416 32L31.9 32C14.3 32 0 46.5 0 64.3L0 447.7C0 465.5 14.3 480 31.9 480L416 480c17.6 0 32-14.5 32-32.3l0-383.4C448 46.5 433.6 32 416 32zM135.4 416l-66.4 0 0-213.8 66.5 0 0 213.8-.1 0zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77zM384.3 416l-66.4 0 0-104c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9l0 105.8-66.4 0 0-213.8 63.7 0 0 29.2 .9 0c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9l0 117.2z" /></svg>
         </Link>
-        </section>
-    </>
+      </section>
+    </main>
   );
 }
