@@ -27,7 +27,7 @@ export default function Home() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -20, opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="relative text-4xl mt-2"
+            className="relative text-4xl my-2"
           >
             {jobs[job]} Entwickler
           </motion.h3>
