@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "./components/Navbar";
-import NavItem from "./components/NavItem";
-import Header from "./components/Header";
+import Navbar from "./Components/Navbar";
+import NavItem from "./Components/NavItem";
+import Header from "./Components/Header";
 import Image from "next/image";
-import logo from "./logo.png"
+import logo from "./images/logo.png"
 import Link from "next/link";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/next';
