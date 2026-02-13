@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "./Components/Navbar";
-import NavItem from "./Components/NavItem";
-import Header from "./Components/Header";
+import Navbar from "./components/Navbar";
+import NavItem from "./components/NavItem";
+import Header from "./components/Header";
 import Image from "next/image";
 import logo from "./images/logo.png"
 import Link from "next/link";
