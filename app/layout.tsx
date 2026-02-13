@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Image from "next/image";
 import logo from "./logo.png"
 import Link from "next/link";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const metadata: Metadata = {
   title: "Portfolio - Mike Karl",
@@ -34,6 +35,7 @@ export default function RootLayout({
           {children}
         </main>
         <div className="bg" />
+        <SpeedInsights />
       </body>
     </html>
   );
