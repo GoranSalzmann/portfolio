@@ -4,7 +4,7 @@ export default function Page() {
     return (
         <main className="min-h-screen flex items-center justify-center flex-col pt-24">
             <h1 className="text-3xl font-bold mb-12">Über mich</h1>
-            <section className="px-24 py-6 w-full">
+            <section className="md:px-24 px-8 py-6 w-full text-justify">
                 <h2 className="text-2xl font-semibold mb-1">Softwareentwickler:</h2>
                 <p>
                     Bei der Softwareentwicklung ist es mein Anspruch, ein System zu bauen, das nicht einfach nur
@@ -28,7 +28,7 @@ export default function Page() {
                     </Link>
                 </p>
             </section>
-            <section className="px-24 py-6 w-full">
+            <section className="md:px-24 px-8 py-6 w-full text-justify">
                 <h2 className="text-2xl font-semibold mb-1">Motorradfahrer:</h2>
                 <p>
                     Der 1. April ist immer einer der besten Tage im Jahr. Die neue Motorradsaison beginnt. Als Kind fuhr
@@ -38,7 +38,7 @@ export default function Page() {
                     mit Sozia.
                 </p>
             </section>
-            <section className="px-24 py-6 w-full">
+            <section className="md:px-24 px-8 py-6 w-full text-justify">
                 <h2 className="text-2xl font-semibold mb-1">Astrofotograf:</h2>
                 <p>
                     Was als P-Seminar während der Oberstufe begannt, entwickelte sich über die Jahre in ein richtiges

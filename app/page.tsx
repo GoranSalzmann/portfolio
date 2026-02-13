@@ -16,8 +16,8 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen">
-      <section className="pl-36 pt-48">
+    <main className="min-h-screen flex items-center justify-center flex-col pt-12">
+      <section className="mx-auto w-fit md:w-full md:pl-36">
         <h2 className="text-7xl/12 font-light">Mike</h2>
         <h1 className="text-9xl font-bold">Karl</h1>
         <AnimatePresence mode="wait">
