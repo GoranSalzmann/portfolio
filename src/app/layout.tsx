@@ -43,6 +43,7 @@ export default function RootLayout({
   return (
     <html
       lang="de"
+      data-scroll-behavior="smooth"
       className={`${spaceGrotesk.variable} ${inter.variable} ${ibmPlexMono.variable}`}
     >
       <body className="min-h-screen bg-deep-space text-text-primary antialiased">
