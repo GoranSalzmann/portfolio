@@ -6,6 +6,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ParticleGrid from "../components/ParticleGrid";
 import { heroContent, site } from "../data/site";
 
+const subtitles = heroContent.subtitle;
+
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroSection() {
@@ -80,9 +82,9 @@ export default function HeroSection() {
         ref={contentRef}
         className="relative z-10 text-center px-6"
       >
-        <p className="font-mono text-amber text-sm md:text-base tracking-[0.1em] uppercase mb-6">
-          {heroContent.subtitle}
-        </p>
+        <div className="font-mono text-amber text-sm md:text-base tracking-[0.1em] uppercase mb-6 overflow-hidden">
+          <SubtitleFlipper />
+        </div>
         <h1
           className="font-display font-bold text-text-primary leading-[0.9] tracking-tight"
           style={{ fontSize: "clamp(4rem, 12vw, 10rem)" }}
@@ -99,5 +101,66 @@ export default function HeroSection() {
         </div>
       </div>
     </section>
+  );
+}
+
+function SubtitleFlipper() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const items = container.querySelectorAll<HTMLSpanElement>(".subtitle-item");
+    if (items.length <= 1) return;
+
+    gsap.set(items, { yPercent: 100, opacity: 0 });
+    gsap.set(items[0], { yPercent: 0, opacity: 1 });
+
+    let current = 0;
+    let timeoutId: ReturnType<typeof setTimeout>;
+    const duration = 0.5;
+    const hold = 2500;
+
+    const showNext = () => {
+      const next = (current + 1) % items.length;
+
+      gsap.to(items[current], {
+        yPercent: -100,
+        opacity: 0,
+        duration,
+        ease: "power2.inOut",
+      });
+
+      gsap.fromTo(
+        items[next],
+        { yPercent: 100, opacity: 0 },
+        { yPercent: 0, opacity: 1, duration, ease: "power2.inOut" }
+      );
+
+      current = next;
+      timeoutId = setTimeout(showNext, hold);
+    };
+
+    timeoutId = setTimeout(showNext, hold);
+
+    return () => {
+      clearTimeout(timeoutId);
+      gsap.killTweensOf(items);
+    };
+  }, []);
+
+  return (
+    <div ref={containerRef} className="grid place-items-center">
+      {subtitles.map((text, i) => (
+        <span
+          key={text}
+          className="subtitle-item col-start-1 row-start-1 whitespace-nowrap"
+          aria-hidden={i !== 0}
+        >
+          {text}
+        </span>
+      ))}
+    </div>
   );
 }

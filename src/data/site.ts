@@ -27,7 +27,12 @@ export const footerContent = {
 };
 
 export const heroContent = {
-  subtitle: "Systementwickler",
+  subtitle: [
+    "Systementwickler",
+    "Creative Technologist",
+    "Low-Level Enthusiast",
+    "Graphics Programmer",
+  ],
   nameFirst: "MIKE",
   nameLast: "KARL",
 };
