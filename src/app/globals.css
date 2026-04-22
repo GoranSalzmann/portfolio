@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@theme {
+  --color-deep-space: #0f0e0c;
+  --color-charcoal: #1a1917;
+  --color-warm-grey: #2a2926;
+  --color-text-primary: #e8e6e3;
+  --color-text-secondary: #8a8680;
+  --color-amber: #e86101;
+  --color-amber-hover: #FF751A;
+  --color-amber-10: #e861011a;
+  --color-amber-20: #e8610133;
+  --color-amber-30: #e861014d;
+
+  --font-display: var(--font-space-grotesk);
+  --font-body: var(--font-inter);
+  --font-mono: var(--font-ibm-plex-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-deep-space);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-amber-30);
+  color: var(--color-text-primary);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-deep-space);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-warm-grey);
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
+
+/* Code block styling */
+.code-block {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+.code-block .function { color: var(--color-text-primary); }
+.code-block .type { color: var(--color-text-secondary); }
+.code-block .comment { color: #8a868080; }
+.code-block .string { color: #e86101b3; }
+.code-block .number { color: #e86101cc; }
+.code-block .keyword { color: var(--color-amber); }
+
+/* Chip component */
+.chip {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background-color: var(--color-amber-10);
+  border: 1px solid var(--color-amber-20);
+  color: var(--color-amber);
+}
+
+/* Section label */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--color-amber);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Text link with underline animation */
+.text-link {
+  position: relative;
+  color: var(--color-amber);
+  text-decoration: none;
+}
+.text-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-amber);
+  transition: width 0.3s ease;
+}
+.text-link:hover::after {
+  width: 100%;
+}
