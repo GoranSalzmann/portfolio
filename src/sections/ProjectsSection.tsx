@@ -13,7 +13,7 @@ export default function ProjectsSection() {
       <div className="max-w-[1200px] mx-auto">
         <div ref={revealRef} className="space-y-12">
           <div className="space-y-4">
-            <p className="section-label">{projectsPage.sectionLabel}</p>
+            <h2 className="section-label">{projectsPage.sectionLabel}</h2>
             <p className="text-text-secondary max-w-xl">
               {projectsPage.subtitle}
             </p>

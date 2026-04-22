@@ -13,7 +13,7 @@ export default function HobbiesSection() {
     <section id="hobbies" className="py-20 md:py-32 px-[5vw]">
       <div className="max-w-[1200px] mx-auto">
         <div className="space-y-4 mb-12">
-          <p className="section-label">{hobbiesPage.label}</p>
+          <h2 className="section-label">{hobbiesPage.label}</h2>
           <p className="text-text-secondary max-w-xl">
             {hobbiesPage.sectionSubtitle}
           </p>

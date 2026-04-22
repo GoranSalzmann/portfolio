@@ -12,7 +12,7 @@ export default function ContactSection() {
     <section id="contact" className="py-20 md:py-32 px-[5vw]">
       <div className="max-w-[1200px] mx-auto">
         <div ref={revealRef} className="max-w-2xl space-y-8">
-          <p className="section-label">{contactPage.label}</p>
+          <h2 className="section-label">{contactPage.label}</h2>
           <p className="text-text-secondary leading-relaxed text-lg">
             {contactContent.text}
           </p>

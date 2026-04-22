@@ -17,7 +17,7 @@ export default function AboutSection() {
     <section id="about" className="py-20 md:py-32 px-[5vw]">
       <div className="max-w-[1200px] mx-auto">
         <div ref={revealRef} className="space-y-8">
-          <p className="section-label">{aboutPage.label}</p>
+          <h2 className="section-label">{aboutPage.label}</h2>
           <div className="max-w-3xl space-y-6 text-text-secondary leading-relaxed">
             {aboutContent.paragraphs.map((p, i) => (
               <p key={i}>{p}</p>

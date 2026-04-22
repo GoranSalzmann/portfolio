@@ -10,7 +10,7 @@ export default function TimelineSection() {
     <section id="timeline" className="py-20 md:py-32 px-[5vw] bg-charcoal">
       <div className="max-w-[1200px] mx-auto">
         <div className="space-y-4 mb-16">
-          <p className="section-label">{timelinePage.label}</p>
+          <h2 className="section-label">{timelinePage.label}</h2>
           <p className="text-text-secondary max-w-xl">
             {timelinePage.subtitle}
           </p>
