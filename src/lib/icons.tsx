@@ -1,7 +1,7 @@
 import {
   Crosshair,
-  Search,
-  Timer,
+  Layers,
+  Blocks,
   Mail,
   Bike,
   Camera,
@@ -64,8 +64,8 @@ const iconMap: Record<
   ComponentType<{ size?: number; className?: string }>
 > = {
   Crosshair,
-  Search,
-  Timer,
+  Layers,
+  Blocks,
   Mail,
   Bike,
   Camera,

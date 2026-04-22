@@ -6,13 +6,13 @@ export const values = [
     quote: "Gute Software geht dem Nutzer aus den Weg.",
   },
   {
-    icon: "Search",
+    icon: "Layers",
     title: "Verständnis",
     text: "Vom Unternehmensprozess bis zum Software-Algorithmus - ich gehe tiefer, bis ich die Ebene verstehe, auf der alles zusammenkommt.",
     quote: "Verstehen beginnt dort, wo die Abstraktion endet.",
   },
   {
-    icon: "Timer",
+    icon: "Blocks",
     title: "Flexibilität",
     text: "Anforderungen ändern sich, das ist der Lauf der Dinge. Ein Fundament zu errichten, dass der Zukunft gewachsen ist unterscheidet Software die überdauert.",
     quote: "Build once, cry once.",
