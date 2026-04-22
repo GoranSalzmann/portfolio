@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "node scripts/cleanup-legacy.js",
     "start": "next start",
     "lint": "next lint"
   },
@@ -19,6 +20,12 @@
     "tailwind-merge": "^3.5.0",
     "tailwindcss": "^4.2.4"
   },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions"
+  ],
   "devDependencies": {
     "@tailwindcss/postcss": "^4.2.4",
     "@types/node": "^24.12.2",
