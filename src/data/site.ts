@@ -28,10 +28,10 @@ export const footerContent = {
 
 export const heroContent = {
   subtitle: [
-    "Systementwickler",
-    "Creative Technologist",
+    "Full-Stack Entwickler",
     "Low-Level Enthusiast",
-    "Graphics Programmer",
+    "Systemintegration",
+    "DevOps"
   ],
   nameFirst: "MIKE",
   nameLast: "KARL",
