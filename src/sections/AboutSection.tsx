@@ -1,17 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import { aboutContent, aboutPage } from "../data/about";
 import { ArrowRight } from "lucide-react";
 
 export default function AboutSection() {
   const revealRef = useScrollReveal<HTMLDivElement>({ stagger: 0.15 });
-
-  const handleProjectsClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const target = document.querySelector("#projects");
-    if (target) target.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <section id="about" className="py-20 md:py-32 px-[5vw]">
@@ -24,9 +19,8 @@ export default function AboutSection() {
             ))}
           </div>
           <div>
-            <a
-              href="#projects"
-              onClick={handleProjectsClick}
+            <Link
+              href="/hobbies"
               className="inline-flex items-center gap-2 text-amber hover:text-amber-hover transition-colors group"
             >
               <span className="text-link">
@@ -36,7 +30,7 @@ export default function AboutSection() {
                 size={18}
                 className="group-hover:translate-x-1 transition-transform"
               />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
