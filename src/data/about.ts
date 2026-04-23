@@ -50,7 +50,7 @@ export const aboutPage = {
   philosophyTitle: "Philosophie",
   philosophyText: [
     "Moderne Software ist oft von vielen Problemen geplagt. Ich habe mir zum Ziel gesetzt Programme zu entwickeln, die dem Nutzer aus dem Weg gehen. Die beste Software ist oft unspektakulär, da sie einfach funktioniert und nicht weiter auffällt. Das ist das Ziel.",
-    "Im Zuge dessen ist es nötig KI anzusprechen. Die nächsten Jahre bringen einen Paradigmenwechsel, der zum Teil schon seit 2025 zu spüren ist. Der Fokus vieler Entwickler verschiebt sich immer mehr weg von Codierung und hin zu Architekturdesign. Der Wert eines Softwareentwicklers misst sich nicht nur in geschriebenen Zeilen Code, sondern in den Ideen und Ansätzen, wie er Probleme löst. Der Entwickler von Morgen muss in der Lage sein KI-Tools zu nutzen um nicht auf der Strecke zu bleiben. Daher nutze ich selbstverständlich auch KI um mich bei meiner Arbeit zu unterstützen. Diese Webseite wurde in ihren Grundzügen mit Hilfe von KI in wenigen Stunden geschrieben. Das zeigt was mit diesen Werkzeugen in den Händen eines kompetenten Entwicklers möglich ist.",
+    "Im Zuge dessen ist es nötig KI anzusprechen. Die nächsten Jahre bringen einen Paradigmenwechsel, der zum Teil schon seit 2025 zu spüren ist. Der Fokus vieler Entwickler verschiebt sich immer mehr weg von Codierung und hin zu Architekturdesign. Der Wert eines Softwareentwicklers misst sich nicht nur in geschriebenen Zeilen Code, sondern in den Ideen und Ansätzen, wie er Probleme löst. Der Entwickler von Morgen muss in der Lage sein KI-Tools zu nutzen um nicht auf der Strecke zu bleiben. Daher nutze ich selbstverständlich auch KI um mich bei meiner Arbeit zu unterstützen.",
   ],
   backgroundTitle: "Hintergrund",
   backgroundText: [
