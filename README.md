@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mike Karl — Portfolio
 
-## Getting Started
+Source code for my personal portfolio. This repo is a showcase of how I structure and write frontend code — not a template to self-host.
 
-First, run the development server:
+**Stack:** Next.js 16 · React 19 · TypeScript · Tailwind CSS v4
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## Architecture
+
+Single-scroll landing page with anchor navigation. Project case studies live on separate hardcoded routes — no CMS, no dynamic `[slug]` pages.
+
+| Route | Description |
+|-------|-------------|
+| `/` | Landing — About, Hobbies, Projects, Timeline, Contact |
+| `/project/emulator` | Example project case study |
+
+Content is inlined directly in page and section components. Only global config (name, nav, social links) lives in [`lib/site.ts`](lib/site.ts).
+
+---
+
+## Project structure
+
+```
+app/
+├── layout.tsx              # Root layout, fonts, metadata
+├── page.tsx                # Home — composes all sections
+├── not-found.tsx           # Styled 404 page
+└── project/
+    └── emulator/
+        └── page.tsx        # Project case study
+
+components/
+├── ui/                     # Primitives (Section, Card, Chip, Timeline, …)
+├── layout/                 # Header, Footer
+├── home/                   # Landing page sections
+├── project/                # Composable project blocks
+└── effects/
+    └── particle-grid.tsx   # Canvas hero background
+
+lib/
+├── site.ts                 # Global site config
+└── cn.ts                   # Tailwind class merge helper
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Component approach
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Small, composable building blocks assembled directly in page files — no monolithic layout wrappers, no separate data layer.
 
-## Learn More
+**UI primitives:** `Container` · `Section` · `SectionHeader` · `Chip` · `Card` · `Button` · `TextLink` · `ImageFrame` · `TwoColumn` · `StatGrid` · `FeatureGrid` · `QuoteBlock` · `Timeline` · `ProjectCard` · `CodeBlock`
 
-To learn more about Next.js, take a look at the following resources:
+**Project blocks:**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Component | Purpose |
+|-----------|---------|
+| `ProjectHero` | Title, tags, year, duration, status, back link |
+| `ProjectDescription` | Two-column text + screenshot |
+| `ProjectFeatures` | Feature cards + stat grid |
+| `ProjectGallery` | Image grid |
+| `ProjectNav` | Previous / next project links |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Design system
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Dark theme with amber accents. Tokens in [`app/globals.css`](app/globals.css):
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Token | Value | Usage |
+|-------|-------|-------|
+| `deep-space` | `#0f0e0c` | Page background |
+| `charcoal` | `#1a1917` | Alternate sections |
+| `amber` | `#e86101` | Accent, CTAs, tags |
+| `text-primary` | `#e8e6e3` | Body text |
+| `text-secondary` | `#8a8680` | Muted text |
+
+**Fonts:** Space Grotesk (display) · Inter (body) · IBM Plex Mono (labels, code)
+
+Utility classes: `.chip` · `.section-label` · `.text-link` · `.code-block`
+
+---
+
+## License
+
+All rights reserved.
