@@ -37,6 +37,7 @@ export default function RootLayout({
   return (
     <html
       lang="de"
+      data-scroll-behavior="smooth"
       className={`${inter.variable} ${spaceGrotesk.variable} ${ibmPlexMono.variable} h-full`}
     >
       <body className="flex min-h-full flex-col font-body antialiased">

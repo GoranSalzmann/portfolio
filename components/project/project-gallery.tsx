@@ -29,8 +29,8 @@ export function ProjectGallery({
               src={image.src}
               alt={image.alt}
               hover
-              height={192}
-              className="[&_img]:h-48 [&_img]:object-cover"
+              aspect="video"
+              fill
             />
           ))}
         </div>

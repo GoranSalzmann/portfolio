@@ -36,6 +36,7 @@ export function ProjectCard({
           src={image}
           alt={title}
           fill
+          sizes="(max-width: 768px) 100vw, 33vw"
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
         />
         <div className="absolute inset-0 flex translate-y-full items-center justify-center bg-deep-space/60 transition-transform duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:translate-y-0">
