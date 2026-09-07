@@ -1,34 +1,6 @@
 import { Container } from "@/components/ui/container";
-import { ProjectCard } from "@/components/ui/project-card";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
-
-const projects = [
-  {
-    title: "6502 Emulator",
-    description:
-      "Cycle-accurate CPU-Simulation in C++ mit eigenem Assembler-Parser.",
-    image: "/assets/emulator-screenshot.svg",
-    tags: ["C++", "6502 Assembly", "Systems Programming"],
-    href: "/project/emulator",
-  },
-  {
-    title: "Software Raytracer",
-    description:
-      "Monte-Carlo-Pfad-Tracing-Renderer in C. Multithreading, BVH-Beschleunigung, sanfte Schatten.",
-    image: "/assets/raytracer-render.svg",
-    tags: ["C", "Computer Graphics", "Multithreading"],
-    href: "/project/raytracer",
-  },
-  {
-    title: "Raycasting Engine",
-    description:
-      "Wolfenstein-3D-Style-Renderer mit DDA-Algorithmus und Textur-Mapping.",
-    image: "/assets/raycaster-screenshot.svg",
-    tags: ["C++", "Game Dev", "Algorithms"],
-    href: "/project/raycaster",
-  },
-];
 
 export function ProjectsSection() {
   return (
@@ -36,13 +8,27 @@ export function ProjectsSection() {
       <Container>
         <SectionHeader
           label="03 / Ausgewählte Projekte"
-          subtitle="Systeme, die ich aus der Transistor-Ebene heraus gebaut habe."
+          subtitle="Ausgewählte Arbeiten folgen in Kürze."
           className="mb-12"
         />
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
-            <ProjectCard key={project.title} {...project} />
-          ))}
+        <div className="border border-warm-grey bg-deep-space px-8 py-16 text-center md:py-24">
+          <p className="font-mono text-sm uppercase tracking-[0.1em] text-amber">
+            Coming Soon
+          </p>
+          <h3 className="mt-6 font-display text-2xl font-semibold tracking-tight text-text-primary md:text-3xl">
+            Projekte in Vorbereitung
+          </h3>
+          <div className="mt-6 flex items-center justify-center gap-4">
+            <div className="h-px w-[60px] bg-amber" />
+            <p className="font-mono text-xs uppercase tracking-wider text-text-secondary md:text-sm">
+              Bald verfügbar
+            </p>
+            <div className="h-px w-[60px] bg-amber" />
+          </div>
+          <p className="mx-auto mt-6 max-w-md text-sm leading-relaxed text-text-secondary">
+            Case Studies zu ausgewählten Arbeiten erscheinen hier, sobald sie
+            bereit sind.
+          </p>
         </div>
       </Container>
     </Section>
