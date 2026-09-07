@@ -26,10 +26,8 @@ export function AboutSection() {
               was Sie suchen, schreiben Sie mir.
             </p>
             <p>
-              Neben dem Code fotografiere ich den Nachthimmel – lange
-              Belichtungszeiten, Tracking-Montierungen, das Sammeln von Licht
-              über Stunden. Das Prinzip ist ähnlich: Geduld, Präzision, das
-              Vertrauen auf einen Prozess, dessen Ergebnis man erst am Ende sieht.
+              Neben der Arbeit fahre ich Motorrad und fotografiere den
+              Nachthimmel.
             </p>
           </div>
           <div>
