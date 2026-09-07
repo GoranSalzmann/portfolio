@@ -12,8 +12,9 @@ export function ContactSection() {
         <div className="max-w-2xl space-y-8">
           <h2 className="section-label">05 / Kontakt</h2>
           <p className="text-lg leading-relaxed text-text-secondary">
-            Ich arbeite gerne an Projekten, die etwas Neues schaffen. Projekte,
-            die über zwecktauglich hinaus gehen um etwas Großartiges zu bauen.
+            Ich suche den Einstieg als Softwareengineer und bringe gerne
+            Kenntnisse für saubere, skalierbare Lösungen in innovative
+            Projekte ein. Schreiben Sie mir, wenn das passt.
           </p>
           <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
             <Button href={`mailto:${site.email}`}>

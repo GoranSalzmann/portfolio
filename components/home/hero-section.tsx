@@ -5,9 +5,9 @@ import { ParticleGrid } from "@/components/effects/particle-grid";
 import { site } from "@/lib/site";
 
 const subtitles = [
-  "Full-Stack Entwickler",
-  "Low-Level Enthusiast",
-  "Systemintegration",
+  "Softwareengineer",
+  "Anwendungsentwickler",
+  "Integration",
   "DevOps",
 ];
 
