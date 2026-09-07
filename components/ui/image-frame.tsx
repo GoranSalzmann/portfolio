@@ -27,7 +27,7 @@ export function ImageFrame({
     return (
       <div
         className={cn(
-          "relative overflow-hidden border border-warm-grey",
+          "relative overflow-hidden border border-border",
           aspect === "video" && "aspect-[4/3]",
           className
         )}
@@ -39,7 +39,7 @@ export function ImageFrame({
 
   return (
     <div
-      className={cn("overflow-hidden border border-warm-grey", className)}
+      className={cn("overflow-hidden border border-border", className)}
     >
       <Image
         src={src}

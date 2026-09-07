@@ -21,9 +21,9 @@ export function Button({
   const styles = cn(
     "inline-flex items-center gap-2 px-6 py-3 font-display font-medium transition-colors",
     variant === "primary" &&
-      "bg-amber text-deep-space hover:bg-amber-hover",
+      "bg-accent text-on-accent hover:bg-accent-hover",
     variant === "outline" &&
-      "border border-warm-grey text-text-primary hover:border-amber hover:text-amber",
+      "border border-border text-foreground hover:border-accent hover:text-accent",
     className
   );
 

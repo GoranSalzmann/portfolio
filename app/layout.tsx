@@ -4,6 +4,8 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { ThemeProvider } from "@/components/theme/theme-provider";
+import { ThemeScript } from "@/components/theme/theme-script";
 import "./globals.css";
 
 const inter = Inter({
@@ -40,12 +42,18 @@ export default function RootLayout({
     <html
       lang="de"
       data-scroll-behavior="smooth"
+      suppressHydrationWarning
       className={`${inter.variable} ${spaceGrotesk.variable} ${ibmPlexMono.variable} h-full`}
     >
+      <head>
+        <ThemeScript />
+      </head>
       <body className="flex min-h-full flex-col font-body antialiased">
-        <Header />
-        <div className="flex-1">{children}</div>
-        <Footer />
+        <ThemeProvider>
+          <Header />
+          <div className="flex-1">{children}</div>
+          <Footer />
+        </ThemeProvider>
         <Analytics />
         <SpeedInsights />
       </body>

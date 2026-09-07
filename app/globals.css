@@ -1,24 +1,61 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-deep-space: #0f0e0c;
   --color-charcoal: #1a1917;
   --color-warm-grey: #2a2926;
-  --color-text-primary: #e8e6e3;
-  --color-text-secondary: #8a8680;
+  --color-bone: #e8e6e3;
+  --color-stone: #8a8680;
+  --color-parchment: #f4f1eb;
+  --color-linen: #ebe6dc;
+  --color-sand: #d4cfc4;
   --color-amber: #e86101;
-  --color-amber-hover: #ff751a;
+  --color-amber-bright: #ff751a;
+  --color-amber-deep: #c95200;
   --color-amber-10: #e861011a;
   --color-amber-20: #e8610133;
   --color-amber-30: #e861014d;
+
+  --color-background: var(--color-parchment);
+  --color-surface: var(--color-linen);
+  --color-border: var(--color-sand);
+  --color-foreground: var(--color-deep-space);
+  --color-muted: var(--color-stone);
+  --color-accent: var(--color-amber);
+  --color-accent-hover: var(--color-amber-deep);
+  --color-accent-10: var(--color-amber-10);
+  --color-accent-20: var(--color-amber-20);
+  --color-accent-30: var(--color-amber-30);
+  --color-on-accent: var(--color-deep-space);
 
   --font-display: var(--font-space-grotesk);
   --font-body: var(--font-inter);
   --font-mono: var(--font-ibm-plex-mono);
 }
 
+@layer theme {
+  :root,
+  :host {
+    @variant dark {
+      --color-background: var(--color-deep-space);
+      --color-surface: var(--color-charcoal);
+      --color-border: var(--color-warm-grey);
+      --color-foreground: var(--color-bone);
+      --color-muted: var(--color-stone);
+      --color-accent-hover: var(--color-amber-bright);
+    }
+  }
+}
+
 html {
+  color-scheme: light;
   scroll-behavior: smooth;
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -29,15 +66,15 @@ html {
 
 body {
   font-family: var(--font-body);
-  background-color: var(--color-deep-space);
-  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background-color: var(--color-amber-30);
-  color: var(--color-text-primary);
+  background-color: var(--color-accent-30);
+  color: var(--color-foreground);
 }
 
 ::-webkit-scrollbar {
@@ -45,16 +82,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-deep-space);
+  background: var(--color-background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-warm-grey);
+  background: var(--color-border);
   border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-text-secondary);
+  background: var(--color-muted);
 }
 
 .code-block {
@@ -64,27 +101,27 @@ body {
 }
 
 .code-block .function {
-  color: var(--color-text-primary);
+  color: var(--color-foreground);
 }
 
 .code-block .type {
-  color: var(--color-text-secondary);
+  color: var(--color-muted);
 }
 
 .code-block .comment {
-  color: #8a868080;
+  color: color-mix(in srgb, var(--color-muted) 50%, transparent);
 }
 
 .code-block .string {
-  color: #e86101b3;
+  color: color-mix(in srgb, var(--color-accent) 70%, transparent);
 }
 
 .code-block .number {
-  color: #e86101cc;
+  color: color-mix(in srgb, var(--color-accent) 80%, transparent);
 }
 
 .code-block .keyword {
-  color: var(--color-amber);
+  color: var(--color-accent);
 }
 
 .chip {
@@ -94,22 +131,22 @@ body {
   font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  background-color: var(--color-amber-10);
-  border: 1px solid var(--color-amber-20);
-  color: var(--color-amber);
+  background-color: var(--color-accent-10);
+  border: 1px solid var(--color-accent-20);
+  color: var(--color-accent);
 }
 
 .section-label {
   font-family: var(--font-mono);
   font-size: 0.875rem;
-  color: var(--color-amber);
+  color: var(--color-accent);
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 
 .text-link {
   position: relative;
-  color: var(--color-amber);
+  color: var(--color-accent);
   text-decoration: none;
 }
 
@@ -120,7 +157,7 @@ body {
   left: 0;
   width: 0;
   height: 1px;
-  background-color: var(--color-amber);
+  background-color: var(--color-accent);
   transition: width 0.3s ease;
 }
 

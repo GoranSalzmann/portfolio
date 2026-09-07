@@ -9,7 +9,7 @@ export function CodeBlock({ children, className }: CodeBlockProps) {
   return (
     <div
       className={cn(
-        "code-block border border-warm-grey bg-charcoal p-5 text-left md:p-6",
+        "code-block border border-border bg-surface p-5 text-left md:p-6",
         className
       )}
     >

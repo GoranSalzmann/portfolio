@@ -17,7 +17,7 @@ interface TimelineProps {
 export function Timeline({ items, className }: TimelineProps) {
   return (
     <div className={cn("relative", className)}>
-      <div className="absolute bottom-0 left-4 top-0 w-px bg-warm-grey md:left-1/2 md:-translate-x-px" />
+      <div className="absolute bottom-0 left-4 top-0 w-px bg-border md:left-1/2 md:-translate-x-px" />
 
       <div className="space-y-12">
         {items.map((item) => (
@@ -33,7 +33,7 @@ function TimelineItem({ item }: { item: TimelineEntry }) {
 
   return (
     <div className="relative flex items-start md:items-center">
-      <div className="absolute left-4 z-10 mt-2 h-3 w-3 -translate-x-1/2 border-2 border-deep-space bg-amber md:left-1/2 md:mt-0" />
+      <div className="absolute left-4 z-10 mt-2 h-3 w-3 -translate-x-1/2 border-2 border-background bg-accent md:left-1/2 md:mt-0" />
 
       <div
         className={cn(
@@ -42,11 +42,11 @@ function TimelineItem({ item }: { item: TimelineEntry }) {
         )}
       >
         <div className="space-y-3">
-          <span className="font-mono text-sm text-amber">{item.year}</span>
-          <h3 className="font-display text-xl font-semibold tracking-tight text-text-primary">
+          <span className="font-mono text-sm text-accent">{item.year}</span>
+          <h3 className="font-display text-xl font-semibold tracking-tight text-foreground">
             {item.title}
           </h3>
-          <p className="text-sm leading-relaxed text-text-secondary">
+          <p className="text-sm leading-relaxed text-muted">
             {item.description}
           </p>
           <ChipList

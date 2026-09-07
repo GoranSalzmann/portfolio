@@ -19,7 +19,7 @@ export function ProjectGallery({
   return (
     <Section>
       <Container className="space-y-12">
-        <h2 className="font-display text-3xl font-semibold tracking-tight text-text-primary md:text-4xl">
+        <h2 className="font-display text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
           {title}
         </h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">

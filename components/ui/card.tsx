@@ -10,8 +10,8 @@ export function Card({ children, className, hover }: CardProps) {
   return (
     <div
       className={cn(
-        "space-y-4 border border-warm-grey p-6",
-        hover && "transition-colors hover:border-amber/30",
+        "space-y-4 border border-border p-6",
+        hover && "transition-colors hover:border-accent/30",
         className
       )}
     >

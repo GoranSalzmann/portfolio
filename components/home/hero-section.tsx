@@ -89,16 +89,17 @@ export function HeroSection() {
       <div
         className="pointer-events-none absolute inset-0 z-[1]"
         style={{
-          background: "linear-gradient(to bottom, transparent 50%, #0F0E0C 100%)",
+          background:
+            "linear-gradient(to bottom, transparent 50%, var(--color-background) 100%)",
         }}
       />
 
       <div className="relative z-10 px-6 text-center">
-        <div className="mb-6 overflow-hidden font-mono text-sm uppercase tracking-[0.1em] text-amber md:text-base">
+        <div className="mb-6 overflow-hidden font-mono text-sm uppercase tracking-[0.1em] text-accent md:text-base">
           <SubtitleFlipper />
         </div>
         <h1
-          className="font-display font-bold leading-[0.9] tracking-tight text-text-primary"
+          className="font-display font-bold leading-[0.9] tracking-tight text-foreground"
           style={{ fontSize: "clamp(4rem, 12vw, 10rem)" }}
         >
           MIKE
@@ -106,8 +107,8 @@ export function HeroSection() {
           KARL
         </h1>
         <div className="mt-6 flex items-center justify-center gap-4">
-          <div className="h-px w-[60px] bg-amber" />
-          <p className="font-mono text-xs tracking-wider text-text-secondary md:text-sm">
+          <div className="h-px w-[60px] bg-accent" />
+          <p className="font-mono text-xs tracking-wider text-muted md:text-sm">
             {site.location}
           </p>
         </div>

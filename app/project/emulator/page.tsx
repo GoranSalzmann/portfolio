@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function EmulatorPage() {
   return (
-    <main className="min-h-screen bg-deep-space">
+    <main className="min-h-screen bg-background">
       <ProjectHero
         title="6502 Emulator"
         subtitle="Cycle-accurate CPU-Simulation in C++"

@@ -24,12 +24,12 @@ export function ProjectHero({
   backHref = "/#projects",
 }: ProjectHeroProps) {
   return (
-    <Section variant="charcoal" padding="hero">
+    <Section variant="surface" padding="hero">
       <Container>
         <div className="space-y-8">
           <Link
             href={backHref}
-            className="inline-flex items-center gap-2 text-link text-amber transition-opacity hover:opacity-80"
+            className="inline-flex items-center gap-2 text-link text-accent transition-opacity hover:opacity-80"
           >
             <ArrowLeft size={16} />
             <span>Zurück</span>
@@ -37,19 +37,19 @@ export function ProjectHero({
 
           <div className="space-y-4">
             <h1
-              className="font-display font-bold leading-[0.9] tracking-tight text-text-primary"
+              className="font-display font-bold leading-[0.9] tracking-tight text-foreground"
               style={{ fontSize: "clamp(2.5rem, 8vw, 6rem)" }}
             >
               {title}
             </h1>
-            <p className="font-display text-xl font-medium text-amber md:text-2xl">
+            <p className="font-display text-xl font-medium text-accent md:text-2xl">
               {subtitle}
             </p>
           </div>
 
           <ChipList items={tags} />
 
-          <div className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-sm text-text-secondary">
+          <div className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-sm text-muted">
             <span>Jahr: {year}</span>
             <span>|</span>
             <span>Dauer: {duration}</span>

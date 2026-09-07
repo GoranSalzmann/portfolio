@@ -9,7 +9,7 @@ export function AboutSection() {
       <Container>
         <div className="space-y-8">
           <h2 className="section-label">01 / About</h2>
-          <div className="max-w-3xl space-y-6 leading-relaxed text-text-secondary">
+          <div className="max-w-3xl space-y-6 leading-relaxed text-muted">
             <p>
               Ich suche den Einstieg als Softwareengineer in einem innovativen
               Unternehmen – dort, wo saubere, skalierbare Lösungen zählen und
@@ -33,7 +33,7 @@ export function AboutSection() {
           <div>
             <Link
               href="/#hobbies"
-              className="group inline-flex items-center gap-2 text-amber transition-colors hover:text-amber-hover"
+              className="group inline-flex items-center gap-2 text-accent transition-colors hover:text-accent-hover"
             >
               <span className="text-link">Mehr über meine Hobbies</span>
               <ArrowRight

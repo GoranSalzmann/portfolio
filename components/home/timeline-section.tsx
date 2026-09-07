@@ -39,7 +39,7 @@ const timelineItems: TimelineEntry[] = [
 
 export function TimelineSection() {
   return (
-    <Section id="timeline" variant="charcoal">
+    <Section id="timeline" variant="surface">
       <Container>
         <SectionHeader
           label="04 / Werdegang"

@@ -27,7 +27,7 @@ export function ProjectCard({
     <Link
       href={href}
       className={cn(
-        "group block overflow-hidden border border-warm-grey bg-deep-space transition-colors duration-300 hover:border-amber/50",
+        "group block overflow-hidden border border-border bg-background transition-colors duration-300 hover:border-accent/50",
         className
       )}
     >
@@ -39,8 +39,8 @@ export function ProjectCard({
           sizes="(max-width: 768px) 100vw, 33vw"
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
         />
-        <div className="absolute inset-0 flex translate-y-full items-center justify-center bg-deep-space/60 transition-transform duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:translate-y-0">
-          <span className="inline-flex translate-y-3 items-center gap-2 text-amber transition-transform delay-100 duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:translate-y-0">
+        <div className="absolute inset-0 flex translate-y-full items-center justify-center bg-background/60 transition-transform duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:translate-y-0">
+          <span className="inline-flex translate-y-3 items-center gap-2 text-accent transition-transform delay-100 duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:translate-y-0">
             {caseStudyLabel}
             <ArrowRight
               size={16}
@@ -51,10 +51,10 @@ export function ProjectCard({
       </div>
       <div className="space-y-4 p-6">
         <ChipList items={tags} />
-        <h3 className="font-display text-xl font-semibold tracking-tight text-text-primary">
+        <h3 className="font-display text-xl font-semibold tracking-tight text-foreground">
           {title}
         </h3>
-        <p className="text-sm leading-relaxed text-text-secondary">
+        <p className="text-sm leading-relaxed text-muted">
           {description}
         </p>
       </div>

@@ -4,7 +4,7 @@ interface SectionProps {
   id?: string;
   children: React.ReactNode;
   className?: string;
-  variant?: "default" | "charcoal";
+  variant?: "default" | "surface";
   padding?: "default" | "none" | "hero";
 }
 
@@ -20,7 +20,7 @@ export function Section({
       id={id}
       className={cn(
         "px-[5vw]",
-        variant === "charcoal" && "bg-charcoal",
+        variant === "surface" && "bg-surface",
         padding === "default" && "py-20 md:py-32",
         padding === "hero" && "pt-32 pb-20",
         padding === "none" && "",

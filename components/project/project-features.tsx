@@ -25,9 +25,9 @@ export function ProjectFeatures({
   stats,
 }: ProjectFeaturesProps) {
   return (
-    <Section variant="charcoal">
+    <Section variant="surface">
       <Container className="max-w-[800px] space-y-12">
-        <h2 className="font-display text-3xl font-semibold tracking-tight text-text-primary md:text-4xl">
+        <h2 className="font-display text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
           {title}
         </h2>
         <FeatureGrid features={features} />

@@ -11,7 +11,7 @@ export function ContactSection() {
       <Container>
         <div className="max-w-2xl space-y-8">
           <h2 className="section-label">05 / Kontakt</h2>
-          <p className="text-lg leading-relaxed text-text-secondary">
+          <p className="text-lg leading-relaxed text-muted">
             Ich suche den Einstieg als Softwareengineer und bringe gerne
             Kenntnisse für saubere, skalierbare Lösungen in innovative
             Projekte ein. Schreiben Sie mir, wenn das passt.

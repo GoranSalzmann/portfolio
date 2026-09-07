@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Mail, Menu, X } from "lucide-react";
+import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { GithubIcon, LinkedInIcon } from "@/components/ui/icons";
 import { navLinks, site, socialLinks } from "@/lib/site";
 import { cn } from "@/lib/cn";
@@ -56,8 +57,8 @@ function NavAnchor({
       className={cn(
         "text-sm transition-colors",
         isActive
-          ? "text-text-primary"
-          : "text-text-secondary hover:text-text-primary",
+          ? "text-foreground"
+          : "text-muted hover:text-foreground",
         className
       )}
     >
@@ -100,14 +101,14 @@ function MobileNav({
         <Menu
           size={24}
           className={cn(
-            "absolute inset-0 text-text-primary transition-opacity duration-200",
+            "absolute inset-0 text-foreground transition-opacity duration-200",
             open ? "opacity-0" : "opacity-100"
           )}
         />
         <X
           size={24}
           className={cn(
-            "absolute inset-0 text-text-primary transition-opacity duration-200",
+            "absolute inset-0 text-foreground transition-opacity duration-200",
             open ? "opacity-100" : "opacity-0"
           )}
         />
@@ -121,7 +122,7 @@ function MobileNav({
             onClick={() => setOpen(false)}
             aria-label="Menü schließen"
           />
-          <div className="relative z-40 border-t border-warm-grey/50 bg-deep-space/98 px-[5vw] py-8 md:hidden">
+          <div className="relative z-40 border-t border-border/50 bg-background/98 px-[5vw] py-8 md:hidden">
             <ul className="mb-8 space-y-4">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -130,7 +131,7 @@ function MobileNav({
                     label={link.label}
                     activeSection={activeSection}
                     onNavigate={() => setOpen(false)}
-                    className="block text-lg text-text-primary"
+                    className="block text-lg text-foreground"
                   />
                 </li>
               ))}
@@ -145,12 +146,13 @@ function MobileNav({
                     target={link.icon !== "mail" ? "_blank" : undefined}
                     rel={link.icon !== "mail" ? "noopener noreferrer" : undefined}
                     aria-label={link.label}
-                    className="text-text-secondary transition-colors hover:text-amber"
+                    className="text-muted transition-colors hover:text-accent"
                   >
                     <Icon size={20} />
                   </a>
                 );
               })}
+              <ThemeToggle />
             </div>
           </div>
         </>
@@ -205,14 +207,14 @@ export function Header() {
       className={cn(
         "fixed left-0 right-0 top-0 z-50 transition-colors duration-300",
         scrolled
-          ? "border-b border-warm-grey/50 bg-deep-space/95"
+          ? "border-b border-border/50 bg-background/95"
           : "border-b border-transparent bg-transparent"
       )}
     >
       <nav className="mx-auto flex max-w-[1400px] items-center justify-between px-[5vw] py-5">
         <Link
           href="/"
-          className="font-display text-lg font-bold tracking-tight text-text-primary"
+          className="font-display text-lg font-bold tracking-tight text-foreground"
         >
           {site.name.toUpperCase()}
         </Link>
@@ -229,7 +231,7 @@ export function Header() {
               </li>
             ))}
           </ul>
-          <div className="flex items-center gap-4 border-l border-warm-grey pl-6">
+          <div className="flex items-center gap-4 border-l border-border pl-6">
             {socialLinks.map((link) => {
               const Icon = iconMap[link.icon];
               return (
@@ -239,16 +241,20 @@ export function Header() {
                   target={link.icon !== "mail" ? "_blank" : undefined}
                   rel={link.icon !== "mail" ? "noopener noreferrer" : undefined}
                   aria-label={link.label}
-                  className="text-text-secondary transition-colors hover:text-amber"
+                  className="text-muted transition-colors hover:text-accent"
                 >
                   <Icon size={18} />
                 </a>
               );
             })}
+            <ThemeToggle />
           </div>
         </div>
 
-        <MobileNav key={pathname} activeSection={highlightedSection} />
+        <div className="flex items-center gap-4 md:hidden">
+          <ThemeToggle />
+          <MobileNav key={pathname} activeSection={highlightedSection} />
+        </div>
       </nav>
     </header>
   );
