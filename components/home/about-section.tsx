@@ -26,8 +26,8 @@ export function AboutSection() {
               was Sie suchen, schreiben Sie mir.
             </p>
             <p>
-              Neben der Arbeit fahre ich Motorrad und fotografiere den
-              Nachthimmel.
+              Neben der Arbeit fahre ich Motorrad, fotografiere den Nachthimmel
+              und drucke 3D-Modelle.
             </p>
           </div>
           <div>

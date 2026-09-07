@@ -1,4 +1,4 @@
-import { Bike, Camera } from "lucide-react";
+import { Bike, Box, Camera } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
@@ -19,6 +19,14 @@ const hobbies = [
     shortDescription: "Nachthimmel fotografieren.",
     paragraphs: [
       "Lange Belichtungen, Tracking, Nachbearbeitung.",
+    ],
+  },
+  {
+    icon: Box,
+    title: "3D-Printing",
+    shortDescription: "Ideen in Kunststoff bringen.",
+    paragraphs: [
+      "CAD, Slicing, Drucken – vom Modell bis zum fertigen Teil.",
     ],
   },
 ];
@@ -47,7 +55,7 @@ export function HobbiesSection() {
             Fotos zu den Hobbies erscheinen hier, sobald sie bereit sind.
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {hobbies.map((hobby) => (
             <Card key={hobby.title} hover className="space-y-6 p-8">
               <div className="flex h-10 w-10 items-center justify-center border border-warm-grey">
