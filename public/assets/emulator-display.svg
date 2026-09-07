@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" fill="none">
-  <rect width="1200" height="675" fill="#1a1917"/>
-  <rect x="40" y="40" width="1120" height="595" stroke="#2a2926" stroke-width="2"/>
-  <text x="600" y="320" fill="#e86101" font-family="monospace" font-size="32" text-anchor="middle">Assembler Display</text>
-  <text x="600" y="370" fill="#8a8680" font-family="monospace" font-size="18" text-anchor="middle">Placeholder Screenshot</text>
-</svg>
