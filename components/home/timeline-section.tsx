@@ -8,24 +8,32 @@ const timelineItems: TimelineEntry[] = [
     year: "2026",
     title: "Anwendungsentwickler @ Brummer Logistik",
     description:
-      "Entwicklung einer neuen Lager-Begleitapp – eines der zentralen Systeme eines Speditions- und Logistikbetriebs. Aufgrund der Leistungen in der Ausbildung für die Rolle ausgewählt; Softwarearchitektur und wichtige Entscheidungen von Tag 1 an.",
+      "Entwicklung einer neuen Lager-Begleitapp – eines der zentralen Systeme eines Speditions- und Logistikbetriebs. Aufgrund der Leistungen in der Ausbildung für die Rolle ausgewählt; Softwarearchitektur von Tag 1 an.",
     tags: ["Software Engineering", "System Architecture", "Logistik"],
-    side: "right",
+    side: "left",
   },
   {
-    year: "2026",
+    year: "2024-2026",
     title: "Ausbildung FI Anwendungsentwicklung",
     description:
       "Fachinformatiker für Anwendungsentwicklung an der Karl-Peter-Obermeier-Schule Passau. Bestanden in zwei Jahren mit Ø 1,0, IHK-Punkte Ø 90 und Auszeichnung.",
     tags: ["Ausbildung", "Anwendungsentwicklung"],
+    side: "right",
+  },
+  {
+    year: "2021-2024",
+    title: "Informatikstudium",
+    description:
+      "Studium an der Universität Passau. Abgebrochen im 6. Semester mit damaligem Ø 2,7.",
+    tags: ["Informatik", "Universität"],
     side: "left",
   },
   {
-    year: "2024",
+    year: "2020-2021",
     title: "Informatikstudium",
     description:
-      "Studium an der TH Deggendorf und der Universität Passau. Abgebrochen im 6. Semester mit damaligem Ø 2,7.",
-    tags: ["Informatik", "Hochschule"],
+      "Studium an der TH Deggendorf. Abgebrochen im 2. Semester.",
+    tags: ["Angewandte Informatik", "Hochschule"],
     side: "right",
   },
   {

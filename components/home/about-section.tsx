@@ -30,18 +30,6 @@ export function AboutSection() {
               und drucke 3D-Modelle.
             </p>
           </div>
-          <div>
-            <Link
-              href="/#hobbies"
-              className="group inline-flex items-center gap-2 text-accent transition-colors hover:text-accent-hover"
-            >
-              <span className="text-link">Mehr über meine Hobbies</span>
-              <ArrowRight
-                size={18}
-                className="transition-transform group-hover:translate-x-1"
-              />
-            </Link>
-          </div>
         </div>
       </Container>
     </Section>
