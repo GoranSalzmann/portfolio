@@ -201,3 +201,26 @@ body {
     animation: none;
   }
 }
+
+.mobile-nav-panel {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-0.75rem);
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease,
+    visibility 0.28s ease;
+}
+
+.mobile-nav-panel[data-state="open"] {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-nav-panel {
+    transition: opacity 0.15s ease, visibility 0.15s ease;
+    transform: none;
+  }
+}
