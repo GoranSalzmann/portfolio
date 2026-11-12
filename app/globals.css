@@ -2,225 +2,366 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/*
+ * Palette: a syntax theme. Every hue has one job.
+ *   key  – structure and anything you can act on (keywords, links, set bits)
+ *   str  – values that were changed by the visitor, string literals
+ *   num  – numbers: years, hex, grades
+ *   dim  – comments and secondary text
+ */
 @theme {
-  --color-deep-space: #0f0e0c;
-  --color-charcoal: #1a1917;
-  --color-warm-grey: #2a2926;
-  --color-bone: #e8e6e3;
-  --color-stone: #8a8680;
-  --color-parchment: #f4f1eb;
-  --color-linen: #ebe6dc;
-  --color-sand: #d4cfc4;
-  --color-amber: #e86101;
-  --color-amber-bright: #ff751a;
-  --color-amber-deep: #c95200;
-  --color-amber-10: #e861011a;
-  --color-amber-20: #e8610133;
-  --color-amber-30: #e861014d;
+  --color-paper: #f1f0f7;
+  --color-raised: #e5e3f1;
+  --color-rule: #cbc8e0;
+  --color-ink: #1b1a3a;
+  --color-dim: #65638a;
+  --color-key: #4035e8;
+  --color-str: #b4174f;
+  --color-num: #0a7266;
 
-  --color-background: var(--color-parchment);
-  --color-surface: var(--color-linen);
-  --color-border: var(--color-sand);
-  --color-foreground: var(--color-deep-space);
-  --color-muted: var(--color-stone);
-  --color-accent: var(--color-amber);
-  --color-accent-hover: var(--color-amber-deep);
-  --color-accent-10: var(--color-amber-10);
-  --color-accent-20: var(--color-amber-20);
-  --color-accent-30: var(--color-amber-30);
-  --color-on-accent: var(--color-deep-space);
-
-  --font-display: var(--font-space-grotesk);
-  --font-body: var(--font-inter);
-  --font-mono: var(--font-ibm-plex-mono);
+  --font-mono: var(--font-martian), ui-monospace, "SFMono-Regular", monospace;
+  --font-serif: var(--font-newsreader), Georgia, serif;
 }
 
-@layer theme {
-  :root,
-  :host {
-    @variant dark {
-      --color-background: var(--color-deep-space);
-      --color-surface: var(--color-charcoal);
-      --color-border: var(--color-warm-grey);
-      --color-foreground: var(--color-bone);
-      --color-muted: var(--color-stone);
-      --color-accent-hover: var(--color-amber-bright);
-    }
-  }
+.dark {
+  --color-paper: #100f26;
+  --color-raised: #1a1938;
+  --color-rule: #302e5c;
+  --color-ink: #e8e6fb;
+  --color-dim: #918ebb;
+  --color-key: #a7a1ff;
+  --color-str: #ff8fb3;
+  --color-num: #5ed6c2;
 }
 
 html {
   color-scheme: light;
   scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
 }
 
 html.dark {
   color-scheme: dark;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-}
-
 body {
-  font-family: var(--font-body);
-  background-color: var(--color-background);
-  color: var(--color-foreground);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-serif);
+  font-size: 1.1875rem;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background-color: var(--color-accent-30);
-  color: var(--color-foreground);
+  background-color: var(--color-key);
+  color: var(--color-paper);
 }
 
-::-webkit-scrollbar {
-  width: 8px;
+:focus-visible {
+  outline: 2px solid var(--color-key);
+  outline-offset: 3px;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--color-background);
+/* ---------- shared pieces ---------- */
+
+.wrap {
+  width: 100%;
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 0;
+@media (min-width: 640px) {
+  .wrap {
+    padding-inline: 2rem;
+  }
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-muted);
-}
-
-.code-block {
+.heading {
   font-family: var(--font-mono);
-  font-size: 0.875rem;
-  line-height: 1.6;
+  font-stretch: 75%;
+  font-weight: 700;
+  font-size: clamp(1.75rem, 1.2rem + 2vw, 2.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
-.code-block .function {
-  color: var(--color-foreground);
+.code {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.85;
 }
 
-.code-block .type {
-  color: var(--color-muted);
+.tok-key {
+  color: var(--color-key);
+}
+.tok-str {
+  color: var(--color-str);
+}
+.tok-num {
+  color: var(--color-num);
+}
+.tok-dim {
+  color: var(--color-dim);
 }
 
-.code-block .comment {
-  color: color-mix(in srgb, var(--color-muted) 50%, transparent);
+.link {
+  color: var(--color-key);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
 }
 
-.code-block .string {
-  color: color-mix(in srgb, var(--color-accent) 70%, transparent);
+.link:hover {
+  text-decoration-thickness: 2px;
 }
 
-.code-block .number {
-  color: color-mix(in srgb, var(--color-accent) 80%, transparent);
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 1.1rem;
+  border: 2px solid var(--color-ink);
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-ink);
+  cursor: pointer;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
 }
 
-.code-block .keyword {
-  color: var(--color-accent);
+.btn:hover {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
 }
 
-.chip {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
+.btn-solid {
+  background-color: var(--color-key);
+  border-color: var(--color-key);
+  color: var(--color-paper);
+}
+
+.btn-solid:hover {
+  background-color: var(--color-ink);
+  border-color: var(--color-ink);
+}
+
+/* ---------- the name as bytes ---------- */
+
+.bytes {
+  container-type: inline-size;
+}
+
+.bytes-grid {
+  --cols: var(--cols-sm);
+  --gap: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  gap: 1.75rem var(--gap);
+}
+
+@media (min-width: 768px) {
+  .bytes-grid {
+    --cols: var(--cols-lg);
+    --gap: 1rem;
+  }
+}
+
+.byte {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  animation: byte-write 0.12s backwards;
+  animation-delay: calc(var(--i) * 90ms + 150ms);
+}
+
+@media (max-width: 767.98px) {
+  .byte[data-space] {
+    display: none;
+  }
+}
+
+.byte-glyph {
+  font-family: var(--font-mono);
+  font-weight: 800;
+  /* one glyph fills its column: column width over the glyph's advance */
+  font-size: min(calc((100cqw / var(--cols) - var(--gap)) * 1.42), 15rem);
+  line-height: 0.86;
+  letter-spacing: 0;
+  text-align: center;
+  user-select: none;
+}
+
+.byte[data-changed] .byte-glyph {
+  color: var(--color-str);
+}
+
+.byte-glyph[data-blank] {
+  color: var(--color-rule);
+}
+
+.byte-hex {
+  margin-top: 0.75rem;
+  font-family: var(--font-mono);
   font-size: 0.75rem;
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  background-color: var(--color-accent-10);
-  border: 1px solid var(--color-accent-20);
-  color: var(--color-accent);
+  text-align: center;
+  color: var(--color-num);
 }
 
-.section-label {
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  color: var(--color-accent);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+.byte-bits {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2px;
+  margin-top: 0.4rem;
 }
 
-.text-link {
+@media (min-width: 768px) {
+  .byte-bits {
+    gap: 3px;
+  }
+}
+
+.bit {
+  height: 2.25rem;
+  border: 1px solid var(--color-rule);
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--color-dim);
+  cursor: pointer;
+  transition:
+    background-color 0.12s,
+    border-color 0.12s,
+    color 0.12s;
+}
+
+@media (min-width: 768px) {
+  .bit {
+    height: 1.75rem;
+  }
+}
+
+.bit:hover {
+  border-color: var(--color-ink);
+  color: var(--color-ink);
+}
+
+.bit[aria-pressed="true"] {
+  background-color: var(--color-key);
+  border-color: var(--color-key);
+  color: var(--color-paper);
+}
+
+.bit[data-flipped] {
+  border-color: var(--color-str);
+  color: var(--color-str);
+}
+
+.bit[data-flipped][aria-pressed="true"] {
+  background-color: var(--color-str);
+  color: var(--color-paper);
+}
+
+.bit:focus-visible {
+  outline-offset: 2px;
   position: relative;
-  color: var(--color-accent);
-  text-decoration: none;
+  z-index: 1;
 }
 
-.text-link::after {
+@keyframes byte-write {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---------- git log ---------- */
+
+.commit {
+  display: grid;
+  grid-template-columns: 3.25rem minmax(0, 1fr);
+}
+
+.commit-graph {
+  position: relative;
+}
+
+/* trunk */
+.commit-graph::before {
   content: "";
   position: absolute;
-  bottom: -2px;
+  left: 7px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--color-ink);
+}
+
+.commit:first-child .commit-graph::before {
+  top: 0.9rem;
+}
+
+.commit:last-child .commit-graph::before {
+  bottom: auto;
+  height: 0.9rem;
+}
+
+.commit-node {
+  position: absolute;
   left: 0;
-  width: 0;
-  height: 1px;
-  background-color: var(--color-accent);
-  transition: width 0.3s ease;
+  top: 0.45rem;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--color-ink);
+  box-shadow: 0 0 0 4px var(--color-paper);
 }
 
-.text-link:hover::after {
-  width: 100%;
+.commit:first-child .commit-node {
+  background-color: var(--color-key);
 }
 
-.subtitle-flip-enter {
-  animation: subtitle-in 0.5s ease forwards;
+/* a branch that forks off the trunk below it and ends here */
+.commit[data-lane="branch"] .commit-node {
+  left: 24px;
+  background-color: var(--color-paper);
+  border: 2px solid var(--color-dim);
+  box-shadow: none;
 }
 
-.subtitle-flip-exit {
-  animation: subtitle-out 0.5s ease forwards;
-}
-
-@keyframes subtitle-in {
-  from {
-    opacity: 0;
-    transform: translateY(100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes subtitle-out {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-100%);
-  }
+.commit[data-lane="branch"] .commit-graph::after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  width: 24px;
+  top: calc(0.45rem + 16px);
+  bottom: 0;
+  border-right: 2px solid var(--color-dim);
+  border-bottom: 2px solid var(--color-dim);
+  border-bottom-right-radius: 14px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .subtitle-flip-enter,
-  .subtitle-flip-exit {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .byte {
     animation: none;
   }
-}
 
-.mobile-nav-panel {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-0.75rem);
-  transition:
-    opacity 0.28s ease,
-    transform 0.28s ease,
-    visibility 0.28s ease;
-}
-
-.mobile-nav-panel[data-state="open"] {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .mobile-nav-panel {
-    transition: opacity 0.15s ease, visibility 0.15s ease;
-    transform: none;
+  .btn,
+  .bit {
+    transition: none;
   }
 }
