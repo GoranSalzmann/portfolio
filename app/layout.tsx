@@ -1,27 +1,23 @@
-import type { Metadata } from "next";
-import { Inter, Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Cormorant_Garamond, Manrope } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
+import { SiteFooter } from "@/components/layout/site-footer";
+import { SiteHeader } from "@/components/layout/site-header";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { ThemeScript } from "@/components/theme/theme-script";
 import "./globals.css";
 
-const inter = Inter({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["300", "400", "500"],
+  style: ["normal", "italic"],
+  variable: "--font-cormorant",
 });
 
-const spaceGrotesk = Space_Grotesk({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
-});
-
-const ibmPlexMono = IBM_Plex_Mono({
-  weight: ["400", "500"],
-  subsets: ["latin"],
-  variable: "--font-ibm-plex-mono",
+  variable: "--font-manrope",
 });
 
 export const metadata: Metadata = {
@@ -31,6 +27,13 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.svg",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#e6ebf6" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0f26" },
+  ],
 };
 
 export default function RootLayout({
@@ -43,16 +46,19 @@ export default function RootLayout({
       lang="de"
       data-scroll-behavior="smooth"
       suppressHydrationWarning
-      className={`${inter.variable} ${spaceGrotesk.variable} ${ibmPlexMono.variable} h-full`}
+      className={`${cormorant.variable} ${manrope.variable}`}
     >
       <head>
         <ThemeScript />
       </head>
-      <body className="flex min-h-full flex-col font-body antialiased">
+      <body>
         <ThemeProvider>
-          <Header />
-          <div className="flex-1">{children}</div>
-          <Footer />
+          <a href="#main" className="skip-link">
+            Zum Inhalt springen
+          </a>
+          <SiteHeader />
+          <main id="main">{children}</main>
+          <SiteFooter />
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />

@@ -1,4 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" rx="18" ry="18" fill="#0f0e0c"/>
-  <text x="50" y="50" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" fill="#e86101" text-anchor="middle" dominant-baseline="central">MK</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#0a0f26"/>
+  <g fill="none" stroke="#eceefb" stroke-linecap="round">
+    <path d="M44 12 A 10 10 0 0 0 35 26" stroke-width="2" opacity="0.9"/>
+    <path d="M46 4 A 18 18 0 0 0 28 32" stroke-width="2" opacity="0.6"/>
+    <path d="M50 -3 A 26 26 0 0 0 20 38" stroke-width="2" opacity="0.35"/>
+  </g>
+  <circle cx="44" cy="22" r="2.6" fill="#ff6b88"/>
+  <path d="M0 64 L0 52 L5 44 L8 50 L12 40 L16 50 L20 46 L25 54 L30 42 L35 52 L40 47 L45 55 L52 43 L57 52 L64 46 L64 64 Z" fill="#05081a"/>
 </svg>
