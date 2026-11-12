@@ -1,4 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" rx="18" ry="18" fill="#0f0e0c"/>
-  <text x="50" y="50" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" fill="#e86101" text-anchor="middle" dominant-baseline="central">MK</text>
+  <rect width="100" height="100" rx="22" fill="#10182b"/>
+  <g fill="none" stroke-linecap="round" stroke-width="11">
+    <path d="M26 74h48" stroke="#00a3c4"/>
+    <path d="M26 58h48" stroke="#5b7cff"/>
+    <path d="M26 42h48" stroke="#b25cf0"/>
+    <path d="M26 26h48" stroke="#f0507e"/>
+  </g>
 </svg>

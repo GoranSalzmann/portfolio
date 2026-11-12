@@ -1,99 +1,33 @@
-"use client";
-
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { ArrowRight, Home } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { CodeBlock } from "@/components/ui/code-block";
-import { Container } from "@/components/ui/container";
 import { navLinks } from "@/lib/site";
 
 export default function NotFound() {
-  const pathname = usePathname();
-
   return (
-    <main className="relative flex min-h-screen items-center overflow-hidden bg-background">
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 30%, rgba(232,97,1,0.06) 0%, transparent 55%)",
-        }}
-      />
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(to bottom, transparent 60%, var(--color-background) 100%)",
-        }}
-      />
-
-      <section className="relative z-10 w-full px-[5vw] pb-24 pt-32">
-        <Container className="max-w-[640px] space-y-8 text-center">
-          <p className="section-label">404 — Seite nicht gefunden</p>
-
-          <h1
-            className="font-display font-bold leading-[0.85] tracking-tight text-foreground"
-            style={{ fontSize: "clamp(5rem, 18vw, 9rem)" }}
-          >
-            404
-          </h1>
-
-          <div className="flex items-center justify-center gap-4">
-            <div className="h-px w-[60px] bg-accent" />
-            <p className="font-mono text-xs uppercase tracking-wider text-muted md:text-sm">
-              Not Found
-            </p>
-            <div className="h-px w-[60px] bg-accent" />
-          </div>
-
-          <p className="text-lg leading-relaxed text-muted">
-            Die angeforderte Route existiert nicht oder wurde verschoben.
-          </p>
-
-          <CodeBlock>
-            <p className="mb-3 text-muted">
-              $ navigate{" "}
-              <span className="text-foreground">{pathname}</span>
-            </p>
-            <p>
-              <span className="keyword">Error</span>
-              {": "}
-              <span className="type">ENOENT</span>
-              <span className="text-muted"> — </span>
-              <span className="string">route not found</span>
-            </p>
-          </CodeBlock>
-
-          <div className="flex flex-col items-center justify-center gap-4 pt-2 sm:flex-row">
-            <Button href="/">
-              <Home size={18} />
-              Zur Startseite
-            </Button>
-          </div>
-
-          <div className="space-y-4 pt-4">
-            <p className="font-mono text-xs uppercase tracking-wider text-muted">
-              Oder schau dich um:
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="group inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-accent"
-                >
-                  <span className="text-link">{link.label}</span>
-                  <ArrowRight
-                    size={14}
-                    className="-translate-x-1 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100"
-                  />
-                </Link>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </section>
+    <main className="project notfound">
+      <svg
+        className="spaghetti"
+        viewBox="0 0 600 160"
+        role="img"
+        aria-label="Ein Knäuel aus Filament, wie nach einem fehlgeschlagenen Druck"
+      >
+        <path d="M10 120c60-90 90 60 150-20s40-90 90-30-30 90 40 70 30-130 90-80-10 100 60 60 50-110 150-60" />
+        <path d="M40 60c50 70 100-60 160 10s70 80 130 20 60-80 120-10 60 40 110-30" />
+      </svg>
+      <h1 className="band-title">404</h1>
+      <p className="about-lead">
+        Dieser Druck hat sich vom Bett gelöst. Die angeforderte Route existiert
+        nicht oder wurde verschoben.
+      </p>
+      <div className="contact-actions">
+        <Link href="/" className="button">
+          Zur Startseite
+        </Link>
+        {navLinks.map((link) => (
+          <Link key={link.href} href={link.href} className="link">
+            {link.label}
+          </Link>
+        ))}
+      </div>
     </main>
   );
 }

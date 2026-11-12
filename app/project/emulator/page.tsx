@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
-import { ProjectDescription } from "@/components/project/project-description";
-import { ProjectFeatures } from "@/components/project/project-features";
-import { ProjectGallery } from "@/components/project/project-gallery";
-import { ProjectHero } from "@/components/project/project-hero";
-import { ProjectNav } from "@/components/project/project-nav";
+import Link from "next/link";
+import { emulator } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "6502 Emulator — Mike Karl",
@@ -13,84 +10,60 @@ export const metadata: Metadata = {
 
 export default function EmulatorPage() {
   return (
-    <main className="min-h-screen bg-background">
-      <ProjectHero
-        title="6502 Emulator"
-        subtitle="Cycle-accurate CPU-Simulation in C++"
-        tags={[
-          "C++",
-          "6502 Assembly",
-          "Systems Programming",
-          "Emulation",
-        ]}
-        year="2023"
-        duration="6 Monate"
-        status="Abgeschlossen"
-      />
+    <main className="project">
+      <Link href="/#projects" className="link">
+        Zurück zu den Projekten
+      </Link>
 
-      <ProjectDescription
-        paragraphs={[
-          "Der MOS 6502 ist der Chip, der die Home-Computer-Revolution antrieb: Apple II, Commodore 64, Nintendo Entertainment System. Er hat 3510 Transistoren. Jeder einzelne zählt.",
-          "Mein Emulator simuliert jeden Taktzyklus des 6502 mit Cycle-Accuracy – das bedeutet, dass die Timing-Korrektheit bis auf einen Takt genau stimmt. Das ist entscheidend für Systeme, die auf präzise Hardware-Timing angewiesen sind, wie der C64 mit seinem VIC-II-Grafikchip.",
-          "Der Emulator enthält einen eigenen Assembler-Parser, der 6502-Assembly-Syntax in Maschinencode übersetzt. Keine externen Abhängigkeiten – nur C++, Standardbibliotheken und das Verständnis der Architektur.",
-        ]}
-        image="/assets/emulator-screenshot.svg"
-        imageAlt="6502 Emulator Terminal"
-      />
+      <header className="project-head">
+        <h1 className="band-title">{emulator.title}</h1>
+        <p className="project-subtitle">{emulator.subtitle}</p>
+        <ul className="tags" aria-label="Themen">
+          {emulator.tags.map((tag) => (
+            <li key={tag}>{tag}</li>
+          ))}
+        </ul>
+        <dl className="project-meta">
+          {emulator.meta.map((item) => (
+            <div key={item.label}>
+              <dt>{item.label}</dt>
+              <dd>{item.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </header>
 
-      <ProjectFeatures
-        features={[
-          {
-            title: "Cycle-Accurate Simulation",
-            description:
-              "Jeder Befehl wird mit korrektem Takt-Verbrauch simuliert. Seiten-Effekte, Page-Crossing-Penalties, genaue Adressierungsmodi.",
-          },
-          {
-            title: "Assembler-Parser",
-            description:
-              "Eigener zweipassiger Assembler mit Label-Auflösung, Expression-Evaluation und Fehlerberichterstattung.",
-          },
-          {
-            title: "Speichersystem",
-            description:
-              "64KB Adressraum mit korrekter Memory-Mapping-Logik. RAM, ROM und Memory-Mapped I/O.",
-          },
-        ]}
-        stats={[
-          { label: "Transistoren simuliert", value: "3,510" },
-          { label: "Implementierte Befehle", value: "56" },
-          { label: "Adressierungsmodi", value: "13" },
-          { label: "Taktzyklen getestet", value: "1M+" },
-        ]}
-      />
+      <section className="band">
+        <h2 className="band-subtitle">Das Projekt</h2>
+        <div className="about">
+          <p className="about-lead">{emulator.paragraphs[0]}</p>
+          <div className="about-rest">
+            {emulator.paragraphs.slice(1).map((paragraph) => (
+              <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <ProjectGallery
-        images={[
-          {
-            src: "/assets/emulator-screenshot.svg",
-            alt: "6502 Emulator Terminal",
-          },
-          {
-            src: "/assets/emulator-display.svg",
-            alt: "Assembler Code",
-          },
-          {
-            src: "/assets/debugger-view.svg",
-            alt: "Debugger Register State",
-          },
-        ]}
-      />
-
-      <ProjectNav
-        prev={{
-          title: "Raycasting Engine",
-          href: "/project/raycaster",
-        }}
-        next={{
-          title: "Software Raytracer",
-          href: "/project/raytracer",
-        }}
-      />
+      <section className="band">
+        <h2 className="band-subtitle">Technische Umsetzung</h2>
+        <ul className="hobbies features">
+          {emulator.features.map((feature) => (
+            <li key={feature.title} className="hobby">
+              <h3>{feature.title}</h3>
+              <p>{feature.description}</p>
+            </li>
+          ))}
+        </ul>
+        <dl className="stats">
+          {emulator.stats.map((stat) => (
+            <div key={stat.label}>
+              <dd>{stat.value}</dd>
+              <dt>{stat.label}</dt>
+            </div>
+          ))}
+        </dl>
+      </section>
     </main>
   );
 }
