@@ -1,61 +1,46 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
+/*
+  The page is a stretch of country road seen from above.
+  Asphalt is the surface, road paint is the text, and anything that needs to
+  stand out borrows from German road signage.
+*/
+:root {
+  --asphalt: #2d3236;
+  --asphalt-deep: #24282b;
+  --paint: #f2f1ea;
+  --dust: #b1b7b5;
+  --sign-yellow: #f6be00;
+  --signal-red: #c8201c;
+  --ink: #121416;
 
-@theme {
-  --color-deep-space: #0f0e0c;
-  --color-charcoal: #1a1917;
-  --color-warm-grey: #2a2926;
-  --color-bone: #e8e6e3;
-  --color-stone: #8a8680;
-  --color-parchment: #f4f1eb;
-  --color-linen: #ebe6dc;
-  --color-sand: #d4cfc4;
-  --color-amber: #e86101;
-  --color-amber-bright: #ff751a;
-  --color-amber-deep: #c95200;
-  --color-amber-10: #e861011a;
-  --color-amber-20: #e8610133;
-  --color-amber-30: #e861014d;
+  --font-body: var(--font-barlow), "DIN Alternate", "Helvetica Neue", sans-serif;
+  --font-sign: var(--font-barlow-condensed), "DIN Condensed", "Arial Narrow",
+    sans-serif;
 
-  --color-background: var(--color-parchment);
-  --color-surface: var(--color-linen);
-  --color-border: var(--color-sand);
-  --color-foreground: var(--color-deep-space);
-  --color-muted: var(--color-stone);
-  --color-accent: var(--color-amber);
-  --color-accent-hover: var(--color-amber-deep);
-  --color-accent-10: var(--color-amber-10);
-  --color-accent-20: var(--color-amber-20);
-  --color-accent-30: var(--color-amber-30);
-  --color-on-accent: var(--color-deep-space);
+  --lane: 3.25rem;
+  --gutter: 1.25rem;
+  --seam: color-mix(in srgb, var(--paint) 16%, transparent);
 
-  --font-display: var(--font-space-grotesk);
-  --font-body: var(--font-inter);
-  --font-mono: var(--font-ibm-plex-mono);
+  color-scheme: dark;
 }
 
-@layer theme {
-  :root,
-  :host {
-    @variant dark {
-      --color-background: var(--color-deep-space);
-      --color-surface: var(--color-charcoal);
-      --color-border: var(--color-warm-grey);
-      --color-foreground: var(--color-bone);
-      --color-muted: var(--color-stone);
-      --color-accent-hover: var(--color-amber-bright);
-    }
+@media (min-width: 48rem) {
+  :root {
+    --lane: 8rem;
+    --gutter: 2.5rem;
+  }
+}
+
+@media (min-width: 72rem) {
+  :root {
+    --lane: 11rem;
   }
 }
 
 html {
-  color-scheme: light;
   scroll-behavior: smooth;
-}
-
-html.dark {
-  color-scheme: dark;
+  background: var(--asphalt);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -65,162 +50,639 @@ html.dark {
 }
 
 body {
+  margin: 0;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: clip;
+  color: var(--paint);
   font-family: var(--font-body);
-  background-color: var(--color-background);
-  color: var(--color-foreground);
+  font-size: 1.125rem;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--asphalt);
+  /* aggregate in the asphalt */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1.1 0 0 0 -.42'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");
+}
+
+p,
+h1,
+h2,
+h3,
+ul,
+ol,
+dl,
+dd {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--sign-yellow);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 ::selection {
-  background-color: var(--color-accent-30);
-  color: var(--color-foreground);
+  background: var(--sign-yellow);
+  color: var(--ink);
 }
 
-::-webkit-scrollbar {
-  width: 8px;
+/* ---------- Frame ---------- */
+
+.site-header,
+.site-footer,
+.route {
+  width: 100%;
+  max-width: 82rem;
+  margin-inline: auto;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--color-background);
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 2rem;
+  padding: 1.25rem var(--gutter);
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 0;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-muted);
-}
-
-.code-block {
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  line-height: 1.6;
-}
-
-.code-block .function {
-  color: var(--color-foreground);
-}
-
-.code-block .type {
-  color: var(--color-muted);
-}
-
-.code-block .comment {
-  color: color-mix(in srgb, var(--color-muted) 50%, transparent);
-}
-
-.code-block .string {
-  color: color-mix(in srgb, var(--color-accent) 70%, transparent);
-}
-
-.code-block .number {
-  color: color-mix(in srgb, var(--color-accent) 80%, transparent);
-}
-
-.code-block .keyword {
-  color: var(--color-accent);
-}
-
-.chip {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.75rem;
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  background-color: var(--color-accent-10);
-  border: 1px solid var(--color-accent-20);
-  color: var(--color-accent);
-}
-
-.section-label {
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  color: var(--color-accent);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.text-link {
-  position: relative;
-  color: var(--color-accent);
+.brand {
+  font-family: var(--font-sign);
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1;
   text-decoration: none;
 }
 
-.text-link::after {
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem clamp(0.7rem, 3.2vw, 1.5rem);
+  font-weight: 500;
+  font-size: clamp(0.9375rem, 3.6vw, 1rem);
+}
+
+.nav-list a {
+  display: inline-block;
+  padding-block: 0.4rem;
+  text-decoration: none;
+  color: var(--dust);
+  border-bottom: 2px solid transparent;
+}
+
+.nav-list a:hover {
+  color: var(--paint);
+  border-bottom-color: var(--sign-yellow);
+}
+
+.route {
+  position: relative;
+  flex: 1;
+  display: grid;
+  grid-template-columns: var(--lane) minmax(0, 1fr);
+  padding-right: var(--gutter);
+}
+
+.route-content {
+  grid-column: 2;
+  min-width: 0;
+}
+
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding: 1.75rem var(--gutter);
+  border-top: 1px solid var(--seam);
+  color: var(--dust);
+  font-size: 1rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-links a:hover {
+  color: var(--paint);
+}
+
+/* ---------- Road ---------- */
+
+.lane {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  width: var(--lane);
+  pointer-events: none;
+}
+
+.lane svg {
+  display: block;
+  overflow: visible;
+}
+
+.lane-line {
+  fill: none;
+  stroke: var(--paint);
+  stroke-width: 4;
+  stroke-dasharray: 30 38;
+  opacity: 0.88;
+}
+
+.lane-line-temporary {
+  stroke: var(--sign-yellow);
+  opacity: 1;
+}
+
+.rider {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.rider svg {
+  position: absolute;
+  width: 2.5rem;
+  /* centre of the bike sits on the line; the headlight beam hangs below */
+  transform: translate(-50%, -24%);
+  overflow: visible;
+  filter: drop-shadow(0 3px 5px rgb(0 0 0 / 0.45));
+}
+
+@media (min-width: 48rem) {
+  .lane-line {
+    stroke-width: 6;
+    stroke-dasharray: 44 56;
+  }
+
+  .rider svg {
+    width: 3.75rem;
+  }
+}
+
+/* ---------- Shared type ---------- */
+
+.stretch {
+  padding-block: clamp(3.5rem, 9vw, 7rem);
+  scroll-margin-top: 1rem;
+}
+
+.stretch-title,
+.project-title {
+  font-family: var(--font-sign);
+  font-weight: 700;
+  font-size: clamp(2.75rem, 7vw, 4.75rem);
+  line-height: 0.95;
+  letter-spacing: -0.005em;
+  margin-bottom: 0.4em;
+}
+
+.stretch-intro {
+  color: var(--dust);
+  max-width: 60ch;
+  margin-bottom: 2.5rem;
+}
+
+.prose {
+  max-width: 64ch;
+  display: grid;
+  gap: 1.25rem;
+  color: var(--dust);
+}
+
+.lead {
+  font-size: clamp(1.25rem, 2.4vw, 1.5rem);
+  line-height: 1.45;
+  color: var(--paint);
+  max-width: 54ch;
+}
+
+.note {
+  margin-top: 2.5rem;
+  color: var(--dust);
+  font-size: 1rem;
+}
+
+.link {
+  text-decoration: underline;
+  text-decoration-color: var(--sign-yellow);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.25em;
+}
+
+.link:hover {
+  color: var(--sign-yellow);
+}
+
+.button {
+  display: inline-block;
+  padding: 0.6em 1.15em 0.65em;
+  border-radius: 6px;
+  background: var(--sign-yellow);
+  color: var(--ink);
+  font-family: var(--font-sign);
+  font-weight: 700;
+  font-size: 1.375rem;
+  line-height: 1.1;
+  text-decoration: none;
+  box-shadow: 0 3px 0 rgb(0 0 0 / 0.35);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.button:hover {
+  background: var(--paint);
+}
+
+.button:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgb(0 0 0 / 0.35);
+}
+
+/* ---------- Hero: the name painted on the road ---------- */
+
+.hero {
+  min-height: calc(100svh - 5rem);
+  display: grid;
+  align-content: center;
+  gap: 3rem;
+  padding-block: 2rem 5rem;
+}
+
+.hero-name {
+  --stretch: 1.34;
+  font-family: var(--font-sign);
+  font-weight: 800;
+  font-size: clamp(6rem, 27vw, 15.5rem);
+  line-height: 0.8;
+  text-transform: uppercase;
+  /* road lettering is elongated so it reads from the saddle */
+  transform: scaleY(var(--stretch));
+  transform-origin: top left;
+  margin-bottom: calc(1.6em * (var(--stretch) - 1));
+  /* paint worn by a few winters */
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.11 .32' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 -3.1 0 0 0 3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23w)'/%3E%3C/svg%3E");
+  mask-size: 420px 420px;
+}
+
+.hero-name span {
+  display: block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-name {
+    animation: lay-paint 1100ms cubic-bezier(0.2, 0.7, 0.1, 1) both;
+  }
+
+  @keyframes lay-paint {
+    from {
+      clip-path: inset(0 0 100% 0);
+    }
+    to {
+      clip-path: inset(0 0 -5% 0);
+    }
+  }
+}
+
+.hero-side {
+  display: grid;
+  justify-items: start;
+  gap: 1.75rem;
+}
+
+.hero-roles {
+  font-family: var(--font-sign);
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  color: var(--dust);
+}
+
+.hero-roles li:first-child {
+  color: var(--paint);
+}
+
+@media (min-width: 62rem) {
+  .hero {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: end;
+    gap: clamp(3rem, 7vw, 7rem);
+  }
+
+  .hero-side {
+    padding-bottom: 1.25rem;
+  }
+}
+
+/* ---------- Signs ---------- */
+
+.sign {
+  display: inline-block;
+  padding: 4px;
+  border-radius: 12px;
+  background: var(--sign-yellow);
+  color: var(--ink);
+  font-family: var(--font-sign);
+  box-shadow: 0 6px 14px rgb(0 0 0 / 0.35);
+}
+
+.sign-face {
+  border: 4px solid var(--ink);
+  border-radius: 9px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.sign-town {
+  padding: 0.12em 0.7em 0;
+  font-weight: 700;
+  font-size: 3.25rem;
+  line-height: 1.1;
+}
+
+.sign-district {
+  padding: 0 1.2em 0.55em;
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.sign-next {
+  padding: 0.2em 0.9em 0.25em;
+  border-bottom: 4px solid var(--ink);
+  font-weight: 700;
+  font-size: 2.25rem;
+  line-height: 1.1;
+}
+
+.sign-leaving {
+  position: relative;
+  padding: 0.3em 0.9em 0.35em;
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 1.1;
+}
+
+.sign-leaving::after {
   content: "";
   position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background-color: var(--color-accent);
-  transition: width 0.3s ease;
+  inset: 0;
+  background: linear-gradient(
+    to top right,
+    transparent calc(50% - 5px),
+    var(--signal-red) calc(50% - 5px),
+    var(--signal-red) calc(50% + 5px),
+    transparent calc(50% + 5px)
+  );
 }
 
-.text-link:hover::after {
-  width: 100%;
+.barrier {
+  height: 1.5rem;
+  border-radius: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--signal-red) 0 3.5rem,
+    var(--paint) 3.5rem 7rem
+  );
+  box-shadow: 0 4px 10px rgb(0 0 0 / 0.35);
 }
 
-.subtitle-flip-enter {
-  animation: subtitle-in 0.5s ease forwards;
+.dead-end {
+  width: clamp(7rem, 20vw, 10rem);
+  filter: drop-shadow(0 6px 10px rgb(0 0 0 / 0.35));
 }
 
-.subtitle-flip-exit {
-  animation: subtitle-out 0.5s ease forwards;
+/* ---------- Hobbies ---------- */
+
+.hobbies {
+  display: grid;
+  gap: 2.5rem 3rem;
 }
 
-@keyframes subtitle-in {
-  from {
-    opacity: 0;
-    transform: translateY(100%);
+.hobby h3 {
+  font-family: var(--font-sign);
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.05;
+  margin-bottom: 0.5rem;
+}
+
+.hobby p {
+  color: var(--dust);
+  max-width: 44ch;
+}
+
+.hobby .hobby-short {
+  color: var(--paint);
+  font-weight: 500;
+}
+
+.hobby-ride h3 {
+  font-size: clamp(3.25rem, 10vw, 6.5rem);
+  line-height: 0.9;
+  color: var(--sign-yellow);
+  margin-bottom: 1rem;
+}
+
+.hobby-ride .hobby-short {
+  font-size: clamp(1.25rem, 2.4vw, 1.5rem);
+}
+
+@media (min-width: 48rem) {
+  .hobbies {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .hobby-ride {
+    grid-column: 1 / -1;
   }
 }
 
-@keyframes subtitle-out {
-  from {
-    opacity: 1;
-    transform: translateY(0);
+/* ---------- Projects: roadworks ---------- */
+
+.roadworks-body {
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.roadworks-body p + p {
+  margin-top: 0.75rem;
+  color: var(--dust);
+  max-width: 54ch;
+}
+
+/* ---------- Timeline: stations along the route ---------- */
+
+.station {
+  display: grid;
+  gap: 0.75rem;
+  padding-block: 1.75rem;
+  border-top: 1px solid var(--seam);
+}
+
+.station:last-child {
+  border-bottom: 1px solid var(--seam);
+}
+
+.station .station-year {
+  justify-self: start;
+  align-self: start;
+  padding: 0.1em 0.5em 0.15em;
+  border-radius: 3px;
+  background: var(--paint);
+  color: var(--ink);
+  font-family: var(--font-sign);
+  font-weight: 700;
+  font-size: 1.375rem;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.station h3 {
+  font-family: var(--font-sign);
+  font-weight: 700;
+  font-size: clamp(1.625rem, 3.2vw, 2.125rem);
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.station p {
+  color: var(--dust);
+  max-width: 62ch;
+}
+
+.station .station-tags,
+.station-tags {
+  margin-top: 0.6rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: color-mix(in srgb, var(--dust) 78%, var(--asphalt));
+}
+
+@media (min-width: 48rem) {
+  .station {
+    grid-template-columns: 9.5rem minmax(0, 1fr);
+    gap: 2rem;
   }
-  to {
-    opacity: 0;
-    transform: translateY(-100%);
+}
+
+/* ---------- Contact ---------- */
+
+.contact,
+.dead-end-page {
+  display: grid;
+  gap: 3rem;
+  justify-items: start;
+  align-items: center;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.75rem;
+  margin-top: 2rem;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+  margin-top: 1.5rem;
+}
+
+.dead-end-page .button {
+  margin-top: 2rem;
+}
+
+.dead-end-page .note {
+  margin-top: 2rem;
+}
+
+.dead-end-page .contact-links {
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 62rem) {
+  .contact,
+  .dead-end-page {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: clamp(3rem, 6vw, 6rem);
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .subtitle-flip-enter,
-  .subtitle-flip-exit {
-    animation: none;
-  }
+/* ---------- Project page ---------- */
+
+.project .stretch + .stretch {
+  padding-top: 0;
 }
 
-.mobile-nav-panel {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-0.75rem);
-  transition:
-    opacity 0.28s ease,
-    transform 0.28s ease,
-    visibility 0.28s ease;
+.project-title {
+  font-size: clamp(3.5rem, 11vw, 8rem);
+  line-height: 0.9;
+  margin-top: 2rem;
 }
 
-.mobile-nav-panel[data-state="open"] {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 3.5rem;
+  margin-top: 2.5rem;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .mobile-nav-panel {
-    transition: opacity 0.15s ease, visibility 0.15s ease;
-    transform: none;
+.facts dt {
+  color: var(--dust);
+  font-size: 1rem;
+}
+
+.facts dd {
+  font-family: var(--font-sign);
+  font-weight: 700;
+  font-size: 1.75rem;
+  line-height: 1.15;
+}
+
+.facts-large {
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--seam);
+}
+
+.facts-large > div {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.facts-large dd {
+  font-size: clamp(2.75rem, 6vw, 4rem);
+  line-height: 1;
+  color: var(--sign-yellow);
+  font-variant-numeric: tabular-nums;
+}
+
+.features {
+  display: grid;
+  gap: 2.5rem 3rem;
+}
+
+@media (min-width: 62rem) {
+  .features {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }

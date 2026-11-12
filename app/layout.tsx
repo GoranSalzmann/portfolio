@@ -1,27 +1,21 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
+import { Barlow, Barlow_Condensed } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
-import { ThemeProvider } from "@/components/theme/theme-provider";
-import { ThemeScript } from "@/components/theme/theme-script";
+import { Road } from "@/components/road";
+import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import "./globals.css";
 
-const inter = Inter({
+const barlow = Barlow({
+  weight: ["400", "500", "600"],
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-barlow",
 });
 
-const spaceGrotesk = Space_Grotesk({
+const barlowCondensed = Barlow_Condensed({
+  weight: ["600", "700", "800"],
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
-});
-
-const ibmPlexMono = IBM_Plex_Mono({
-  weight: ["400", "500"],
-  subsets: ["latin"],
-  variable: "--font-ibm-plex-mono",
+  variable: "--font-barlow-condensed",
 });
 
 export const metadata: Metadata = {
@@ -42,18 +36,15 @@ export default function RootLayout({
     <html
       lang="de"
       data-scroll-behavior="smooth"
-      suppressHydrationWarning
-      className={`${inter.variable} ${spaceGrotesk.variable} ${ibmPlexMono.variable} h-full`}
+      className={`${barlow.variable} ${barlowCondensed.variable}`}
     >
-      <head>
-        <ThemeScript />
-      </head>
-      <body className="flex min-h-full flex-col font-body antialiased">
-        <ThemeProvider>
-          <Header />
-          <div className="flex-1">{children}</div>
-          <Footer />
-        </ThemeProvider>
+      <body>
+        <SiteHeader />
+        <div className="route">
+          <Road />
+          <div className="route-content">{children}</div>
+        </div>
+        <SiteFooter />
         <Analytics />
         <SpeedInsights />
       </body>

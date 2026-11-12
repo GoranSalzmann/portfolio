@@ -1,6 +1,8 @@
 export const site = {
   name: "Mike Karl",
   location: "Grafenau, Germany",
+  town: "Grafenau",
+  district: "Landkreis Freyung-Grafenau",
   email: "karl.mike2002@gmail.com",
   github: "https://github.com/GoranSalzmann",
   linkedin: "https://www.linkedin.com/in/mike-karl-a58925381/",
