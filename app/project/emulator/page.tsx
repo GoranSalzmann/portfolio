@@ -1,96 +1,73 @@
 import type { Metadata } from "next";
-import { ProjectDescription } from "@/components/project/project-description";
-import { ProjectFeatures } from "@/components/project/project-features";
-import { ProjectGallery } from "@/components/project/project-gallery";
-import { ProjectHero } from "@/components/project/project-hero";
-import { ProjectNav } from "@/components/project/project-nav";
+import Link from "next/link";
+import { Colophon, Masthead } from "@/components/chrome";
+import { projects } from "@/content/projects";
+
+const project = projects.find((p) => p.slug === "emulator")!;
 
 export const metadata: Metadata = {
-  title: "6502 Emulator — Mike Karl",
-  description:
-    "Cycle-accurate CPU-Simulation in C++ mit eigenem Assembler-Parser.",
+  title: `${project.title} — Mike Karl`,
+  description: project.subtitle,
 };
 
 export default function EmulatorPage() {
   return (
-    <main className="min-h-screen bg-background">
-      <ProjectHero
-        title="6502 Emulator"
-        subtitle="Cycle-accurate CPU-Simulation in C++"
-        tags={[
-          "C++",
-          "6502 Assembly",
-          "Systems Programming",
-          "Emulation",
-        ]}
-        year="2023"
-        duration="6 Monate"
-        status="Abgeschlossen"
-      />
+    <>
+      <Masthead />
+      <main>
+        <header className="case-hero">
+          <Link className="case-back" href="/#projects">
+            Alle Projekte
+          </Link>
+          <h1 className="case-title">{project.title}</h1>
+          <p className="case-subtitle">{project.subtitle}</p>
+          <dl className="case-meta">
+            <div>
+              <dt>Jahr</dt>
+              <dd>{project.year}</dd>
+            </div>
+            <div>
+              <dt>Dauer</dt>
+              <dd>{project.duration}</dd>
+            </div>
+            <div>
+              <dt>Status</dt>
+              <dd>{project.status}</dd>
+            </div>
+          </dl>
+          <p className="case-tags">{project.tags.join(", ")}</p>
+        </header>
 
-      <ProjectDescription
-        paragraphs={[
-          "Der MOS 6502 ist der Chip, der die Home-Computer-Revolution antrieb: Apple II, Commodore 64, Nintendo Entertainment System. Er hat 3510 Transistoren. Jeder einzelne zählt.",
-          "Mein Emulator simuliert jeden Taktzyklus des 6502 mit Cycle-Accuracy – das bedeutet, dass die Timing-Korrektheit bis auf einen Takt genau stimmt. Das ist entscheidend für Systeme, die auf präzise Hardware-Timing angewiesen sind, wie der C64 mit seinem VIC-II-Grafikchip.",
-          "Der Emulator enthält einen eigenen Assembler-Parser, der 6502-Assembly-Syntax in Maschinencode übersetzt. Keine externen Abhängigkeiten – nur C++, Standardbibliotheken und das Verständnis der Architektur.",
-        ]}
-        image="/assets/emulator-screenshot.svg"
-        imageAlt="6502 Emulator Terminal"
-      />
+        <section className="block">
+          <h2 className="block-title">Das Projekt</h2>
+          <div className="prose prose-lead">
+            {project.description.map((paragraph) => (
+              <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+            ))}
+          </div>
+        </section>
 
-      <ProjectFeatures
-        features={[
-          {
-            title: "Cycle-Accurate Simulation",
-            description:
-              "Jeder Befehl wird mit korrektem Takt-Verbrauch simuliert. Seiten-Effekte, Page-Crossing-Penalties, genaue Adressierungsmodi.",
-          },
-          {
-            title: "Assembler-Parser",
-            description:
-              "Eigener zweipassiger Assembler mit Label-Auflösung, Expression-Evaluation und Fehlerberichterstattung.",
-          },
-          {
-            title: "Speichersystem",
-            description:
-              "64KB Adressraum mit korrekter Memory-Mapping-Logik. RAM, ROM und Memory-Mapped I/O.",
-          },
-        ]}
-        stats={[
-          { label: "Transistoren simuliert", value: "3,510" },
-          { label: "Implementierte Befehle", value: "56" },
-          { label: "Adressierungsmodi", value: "13" },
-          { label: "Taktzyklen getestet", value: "1M+" },
-        ]}
-      />
-
-      <ProjectGallery
-        images={[
-          {
-            src: "/assets/emulator-screenshot.svg",
-            alt: "6502 Emulator Terminal",
-          },
-          {
-            src: "/assets/emulator-display.svg",
-            alt: "Assembler Code",
-          },
-          {
-            src: "/assets/debugger-view.svg",
-            alt: "Debugger Register State",
-          },
-        ]}
-      />
-
-      <ProjectNav
-        prev={{
-          title: "Raycasting Engine",
-          href: "/project/raycaster",
-        }}
-        next={{
-          title: "Software Raytracer",
-          href: "/project/raytracer",
-        }}
-      />
-    </main>
+        <section className="block">
+          <h2 className="block-title">Technische Umsetzung</h2>
+          <ul className="feature-list">
+            {project.features.map((feature) => (
+              <li key={feature.title}>
+                <h3>{feature.title}</h3>
+                <p>{feature.description}</p>
+              </li>
+            ))}
+          </ul>
+          <dl className="stat-row">
+            {project.stats.map((stat) => (
+              <div key={stat.label}>
+                <dt>{stat.label}</dt>
+                <dd>{stat.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      </main>
+      <Colophon />
+    </>
   );
 }

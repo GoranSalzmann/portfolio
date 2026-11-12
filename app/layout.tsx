@@ -1,33 +1,25 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
+import { Instrument_Serif, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
-import { ThemeProvider } from "@/components/theme/theme-provider";
-import { ThemeScript } from "@/components/theme/theme-script";
+import { site } from "@/content/site";
 import "./globals.css";
 
-const inter = Inter({
+const serif = Instrument_Serif({
+  weight: "400",
+  style: ["normal", "italic"],
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-serif",
 });
 
-const spaceGrotesk = Space_Grotesk({
+const mono = Geist_Mono({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
-});
-
-const ibmPlexMono = IBM_Plex_Mono({
-  weight: ["400", "500"],
-  subsets: ["latin"],
-  variable: "--font-ibm-plex-mono",
+  variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
   title: "Mike Karl — Portfolio",
-  description:
-    "Mike Karl — Softwareengineer & Anwendungsentwickler aus Grafenau. Portfolio mit Projekten aus Systems Programming, Computer Graphics und Low-Level-Entwicklung.",
+  description: site.description,
   icons: {
     icon: "/favicon.svg",
   },
@@ -39,21 +31,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="de"
-      data-scroll-behavior="smooth"
-      suppressHydrationWarning
-      className={`${inter.variable} ${spaceGrotesk.variable} ${ibmPlexMono.variable} h-full`}
-    >
-      <head>
-        <ThemeScript />
-      </head>
-      <body className="flex min-h-full flex-col font-body antialiased">
-        <ThemeProvider>
-          <Header />
-          <div className="flex-1">{children}</div>
-          <Footer />
-        </ThemeProvider>
+    <html lang="de" className={`${serif.variable} ${mono.variable}`}>
+      <body>
+        {children}
         <Analytics />
         <SpeedInsights />
       </body>
