@@ -1,226 +1,887 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
+/*
+ * Kartenblatt: the site is a topographic map sheet.
+ * Light is the printed day map, dark is the same sheet in night colours.
+ * Red is reserved for the route, so it is also the colour of every link.
+ */
+:root {
+  --paper: #fafaf5;
+  --ink: #1b2521;
+  --muted: #56625c;
+  --rule: #d9dccf;
+  --forest: #d3e5b9;
+  --forest-deep: #b9d79e;
+  --contour: #c4905f;
+  --water: #2b79bd;
+  --grid: #a9b6c4;
+  --route: #d41c48;
 
-@theme {
-  --color-deep-space: #0f0e0c;
-  --color-charcoal: #1a1917;
-  --color-warm-grey: #2a2926;
-  --color-bone: #e8e6e3;
-  --color-stone: #8a8680;
-  --color-parchment: #f4f1eb;
-  --color-linen: #ebe6dc;
-  --color-sand: #d4cfc4;
-  --color-amber: #e86101;
-  --color-amber-bright: #ff751a;
-  --color-amber-deep: #c95200;
-  --color-amber-10: #e861011a;
-  --color-amber-20: #e8610133;
-  --color-amber-30: #e861014d;
+  --font-text: var(--font-barlow), ui-sans-serif, system-ui, sans-serif;
+  --font-sign: var(--font-barlow-condensed), var(--font-text);
+  --font-feature: var(--font-caslon), ui-serif, Georgia, serif;
 
-  --color-background: var(--color-parchment);
-  --color-surface: var(--color-linen);
-  --color-border: var(--color-sand);
-  --color-foreground: var(--color-deep-space);
-  --color-muted: var(--color-stone);
-  --color-accent: var(--color-amber);
-  --color-accent-hover: var(--color-amber-deep);
-  --color-accent-10: var(--color-amber-10);
-  --color-accent-20: var(--color-amber-20);
-  --color-accent-30: var(--color-amber-30);
-  --color-on-accent: var(--color-deep-space);
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+  --header-h: 3.75rem;
+  --map-h: max(32rem, calc(100svh - var(--header-h) - 3.5rem));
 
-  --font-display: var(--font-space-grotesk);
-  --font-body: var(--font-inter);
-  --font-mono: var(--font-ibm-plex-mono);
-}
-
-@layer theme {
-  :root,
-  :host {
-    @variant dark {
-      --color-background: var(--color-deep-space);
-      --color-surface: var(--color-charcoal);
-      --color-border: var(--color-warm-grey);
-      --color-foreground: var(--color-bone);
-      --color-muted: var(--color-stone);
-      --color-accent-hover: var(--color-amber-bright);
-    }
-  }
-}
-
-html {
   color-scheme: light;
-  scroll-behavior: smooth;
 }
 
-html.dark {
+:root.dark {
+  --paper: #121a23;
+  --ink: #e9edea;
+  --muted: #9ba7a6;
+  --rule: #2b3640;
+  --forest: #1b372f;
+  --forest-deep: #21493a;
+  --contour: #8a6e4e;
+  --water: #5fb0ee;
+  --grid: #3c4a58;
+  --route: #ff6482;
+
   color-scheme: dark;
 }
 
-@media (prefers-reduced-motion: reduce) {
+html {
+  scroll-padding-top: var(--header-h);
+}
+
+@media (prefers-reduced-motion: no-preference) {
   html {
-    scroll-behavior: auto;
+    scroll-behavior: smooth;
   }
 }
 
 body {
-  font-family: var(--font-body);
-  background-color: var(--color-background);
-  color: var(--color-foreground);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: 1.0625rem;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background-color: var(--color-accent-30);
-  color: var(--color-foreground);
+  background: var(--route);
+  color: var(--paper);
 }
 
-::-webkit-scrollbar {
-  width: 8px;
+:focus-visible {
+  outline: 2px solid var(--route);
+  outline-offset: 3px;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--color-background);
+h1,
+h2 {
+  font-family: var(--font-sign);
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 0;
+h2 {
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  line-height: 1;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-muted);
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.3;
 }
 
-.code-block {
-  font-family: var(--font-mono);
+.wrap {
+  max-width: 78rem;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+}
+
+.site-header-bar {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  height: var(--header-h);
+  padding-inline: var(--gutter);
+}
+
+.site-name {
+  font-family: var(--font-sign);
+  font-size: 1.375rem;
+  font-weight: 600;
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.75rem;
+  margin-left: auto;
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.site-nav a {
+  padding-block: 0.25rem;
+  text-decoration: underline transparent 2px;
+  text-underline-offset: 0.35em;
+  transition: text-decoration-color 0.15s;
+}
+
+.site-nav a:hover {
+  text-decoration-color: var(--route);
+}
+
+.site-header-tools {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.theme-toggle,
+.menu-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.25rem;
+  padding: 0 0.7rem;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
   font-size: 0.875rem;
-  line-height: 1.6;
+  font-weight: 500;
+  cursor: pointer;
 }
 
-.code-block .function {
-  color: var(--color-foreground);
+.theme-toggle:hover,
+.menu-button:hover {
+  border-color: var(--ink);
 }
 
-.code-block .type {
-  color: var(--color-muted);
+.menu-button {
+  display: none;
 }
 
-.code-block .comment {
-  color: color-mix(in srgb, var(--color-muted) 50%, transparent);
+@media (max-width: 52rem) {
+  .site-header-tools {
+    margin-left: auto;
+  }
+
+  .menu-button {
+    display: inline-flex;
+  }
+
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    padding: 0.5rem var(--gutter) 1.5rem;
+    background: var(--paper);
+    border-bottom: 1px solid var(--ink);
+    font-family: var(--font-sign);
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  .site-nav[data-open="true"] {
+    display: flex;
+  }
+
+  .site-nav a {
+    padding-block: 0.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
 }
 
-.code-block .string {
-  color: color-mix(in srgb, var(--color-accent) 70%, transparent);
-}
+/* ---------- Hero map ---------- */
 
-.code-block .number {
-  color: color-mix(in srgb, var(--color-accent) 80%, transparent);
-}
-
-.code-block .keyword {
-  color: var(--color-accent);
-}
-
-.chip {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.75rem;
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  background-color: var(--color-accent-10);
-  border: 1px solid var(--color-accent-20);
-  color: var(--color-accent);
-}
-
-.section-label {
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  color: var(--color-accent);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.text-link {
+.hero {
   position: relative;
-  color: var(--color-accent);
-  text-decoration: none;
 }
 
-.text-link::after {
+.hero-map {
+  height: var(--map-h);
+  overflow: hidden;
+  border-bottom: 1px solid var(--ink);
+}
+
+.map {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.map-forest {
+  fill: var(--forest);
+}
+
+.map-forest-high {
+  fill: var(--forest-deep);
+}
+
+.map-grid path {
+  fill: none;
+  stroke: var(--grid);
+  stroke-width: 1;
+  opacity: 0.55;
+  vector-effect: non-scaling-stroke;
+}
+
+.map-contour {
+  fill: none;
+  stroke: var(--contour);
+  stroke-width: 0.9;
+  opacity: 0.6;
+  vector-effect: non-scaling-stroke;
+}
+
+.map-contour-major {
+  stroke-width: 1.6;
+  opacity: 0.9;
+}
+
+.map-river {
+  fill: none;
+  stroke: var(--water);
+  stroke-width: 2;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.map-danube {
+  stroke-width: 3.5;
+}
+
+.map text {
+  fill: var(--ink);
+  stroke: var(--paper);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+  paint-order: stroke;
+  font-family: var(--font-text);
+  font-size: 13px;
+}
+
+.map .map-water-label {
+  fill: var(--water);
+  font-family: var(--font-feature);
+  font-style: italic;
+  font-size: 17px;
+  letter-spacing: 0.12em;
+}
+
+.map .map-grid-label {
+  fill: var(--muted);
+  font-size: 10.5px;
+  stroke-width: 3px;
+}
+
+.map-summit {
+  fill: var(--ink);
+}
+
+.map .map-summit-label {
+  font-family: var(--font-feature);
+  font-style: italic;
+}
+
+.map .map-summit-height {
+  font-family: var(--font-text);
+  font-style: normal;
+  font-size: 11px;
+  fill: var(--muted);
+}
+
+.map-place {
+  fill: var(--paper);
+  stroke: var(--muted);
+  stroke-width: 1.5;
+}
+
+.map .map-place-label {
+  fill: var(--muted);
+}
+
+.map-route {
+  fill: none;
+  stroke: var(--route);
+  stroke-width: 5;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+}
+
+.map-station circle {
+  fill: var(--paper);
+  stroke: var(--ink);
+  stroke-width: 3.5;
+}
+
+.map-home circle {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2.5;
+}
+
+.map-home circle + circle {
+  fill: var(--ink);
+  stroke: none;
+}
+
+.map .map-station-name {
+  font-family: var(--font-sign);
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.map .map-station-note {
+  font-family: var(--font-text);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* The one piece of choreography: the route is drawn once, station by station. */
+@media (prefers-reduced-motion: no-preference) {
+  .map-route {
+    animation: route-draw 2.8s 0.4s cubic-bezier(0.55, 0, 0.35, 1) backwards;
+  }
+
+  .map-station {
+    animation: station-arrive 0.5s calc(0.4s + var(--step) * 1.3s) backwards;
+  }
+}
+
+@keyframes route-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+
+@keyframes station-arrive {
+  from {
+    opacity: 0;
+  }
+}
+
+.hero-title {
+  position: absolute;
+  top: 0;
+  left: var(--gutter);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: var(--map-h);
+  padding-bottom: clamp(1.5rem, 4vh, 3rem);
+  pointer-events: none;
+  /* A paper halo, the way a map keeps lettering clear of its linework. */
+  text-shadow:
+    0 0 3px var(--paper),
+    2px 2px 3px var(--paper),
+    -2px 2px 3px var(--paper),
+    2px -2px 3px var(--paper),
+    -2px -2px 3px var(--paper),
+    0 0 14px var(--paper);
+}
+
+.hero-title h1 {
+  font-size: clamp(5rem, min(12.5vw, 26vh), 12rem);
+  line-height: 0.8;
+  margin-bottom: 0.14em;
+}
+
+.hero-roles {
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  font-weight: 500;
+}
+
+.hero-place {
+  font-family: var(--font-feature);
+  font-style: italic;
+  color: var(--muted);
+}
+
+.hero-margin {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 3.5rem;
+  padding: 0.75rem var(--gutter);
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.scale {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.scale-bar {
+  /* 10 km at the map's rendered scale: the sheet is 160 km by 90 km. */
+  width: max(calc(100vw / 16), calc(var(--map-h) / 9));
+  height: 6px;
+  border: 1px solid var(--ink);
+  background: linear-gradient(to right, var(--ink) 50%, transparent 50%);
+}
+
+@media (max-width: 52rem) {
+  :root {
+    --map-h: clamp(20rem, 60svh, 105vw);
+  }
+
+  /* Shift the crop east a little so Passau's label has room. */
+  .map {
+    width: calc(100% + 3rem);
+    margin-left: -3rem;
+  }
+
+  .hero-title {
+    position: static;
+    height: auto;
+    padding: 2rem var(--gutter) 1.5rem;
+    text-shadow: none;
+  }
+
+  .hero-title h1 {
+    font-size: clamp(5rem, 28vw, 9rem);
+  }
+
+  .hero-margin {
+    border-top: 1px solid var(--rule);
+  }
+
+  .map text,
+  .map .map-station-note {
+    font-size: 25px;
+  }
+
+  .map .map-station-name {
+    font-size: 34px;
+  }
+
+  .map .map-station-note,
+  .map .map-summit-label {
+    font-size: 21px;
+  }
+
+  .map .map-water-label {
+    font-size: 28px;
+  }
+
+  .map .map-summit-height,
+  .map .map-grid-label,
+  .map .map-place-label,
+  .map-place {
+    display: none;
+  }
+
+  .map-route {
+    stroke-width: 7;
+  }
+}
+
+/* ---------- Sections ---------- */
+
+.band {
+  padding-block: clamp(4.5rem, 10vw, 8.5rem);
+  border-top: 1px solid var(--rule);
+}
+
+.hero + .band {
+  border-top: 0;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: 2.5rem clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+
+.heading p {
+  margin-top: 1rem;
+  max-width: 22rem;
+  color: var(--muted);
+}
+
+.prose {
+  max-width: 39rem;
+}
+
+.prose p + p {
+  margin-top: 1.25em;
+}
+
+.prose p:first-child:not(:only-child) {
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.footnote {
+  margin-top: 2rem;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+@media (max-width: 52rem) {
+  .split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Hobbies, set as the map's legend */
+
+.legend li {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: 1.75rem;
+  align-items: start;
+  padding-block: 1.75rem;
+  border-top: 1px solid var(--rule);
+}
+
+.legend li:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.legend-short {
+  font-family: var(--font-feature);
+  font-style: italic;
+  color: var(--muted);
+}
+
+.legend h3 + .legend-short + p {
+  margin-top: 0.5rem;
+  max-width: 34rem;
+}
+
+.symbol {
+  width: 3rem;
+  height: 3rem;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.symbol-casing {
+  stroke: var(--ink);
+  stroke-width: 9;
+}
+
+.symbol-fill {
+  stroke: var(--route);
+  stroke-width: 5;
+}
+
+.symbol-solid {
+  fill: var(--ink);
+}
+
+.symbol-line {
+  stroke: var(--contour);
+  stroke-width: 3;
+}
+
+/* Projects: a part of the sheet that has not been surveyed yet */
+
+.unmapped {
+  padding: clamp(2rem, 6vw, 4.5rem);
+  border: 1px dashed var(--muted);
+  background-image:
+    linear-gradient(to right, var(--rule) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--rule) 1px, transparent 1px);
+  background-size: 4rem 4rem;
+  background-position: -1px -1px;
+}
+
+.unmapped h3 {
+  font-family: var(--font-sign);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  line-height: 1.1;
+}
+
+.unmapped p {
+  margin-top: 0.75rem;
+  max-width: 30rem;
+  color: var(--muted);
+}
+
+.unmapped h3,
+.unmapped p {
+  width: fit-content;
+  background: var(--paper);
+  box-shadow: 0 0 0 0.4rem var(--paper);
+}
+
+/* Career: the route from the map, continued as its stages */
+
+.stages li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  column-gap: 4rem;
+  padding-bottom: 3rem;
+}
+
+.stages li::before {
   content: "";
   position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background-color: var(--color-accent);
-  transition: width 0.3s ease;
+  top: 0;
+  bottom: 0;
+  left: calc(9.5rem - 2px);
+  width: 4px;
+  background: var(--route);
 }
 
-.text-link:hover::after {
-  width: 100%;
+.stages li:first-child::before {
+  top: 0.9rem;
 }
 
-.subtitle-flip-enter {
-  animation: subtitle-in 0.5s ease forwards;
+.stages li:last-child {
+  padding-bottom: 0;
 }
 
-.subtitle-flip-exit {
-  animation: subtitle-out 0.5s ease forwards;
+.stages li:last-child::before {
+  bottom: auto;
+  height: 0.9rem;
 }
 
-@keyframes subtitle-in {
-  from {
-    opacity: 0;
-    transform: translateY(100%);
+.stages li::after {
+  content: "";
+  position: absolute;
+  top: 0.4rem;
+  left: calc(9.5rem - 0.5rem);
+  width: 1rem;
+  height: 1rem;
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  background: var(--paper);
+}
+
+.stage-year {
+  font-family: var(--font-sign);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.stage-body h3 {
+  font-size: 1.375rem;
+}
+
+.stage-body h3 + p {
+  margin-top: 0.5rem;
+  max-width: 36rem;
+}
+
+.stage-tags {
+  margin-top: 0.75rem;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+@media (max-width: 40rem) {
+  .stages li {
+    grid-template-columns: minmax(0, 1fr);
+    padding-left: 2.25rem;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .stages li::before {
+    left: calc(0.5rem - 2px);
+  }
+
+  .stages li::after {
+    left: 0;
+  }
+
+  .stage-year {
+    text-align: left;
+    color: var(--muted);
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
   }
 }
 
-@keyframes subtitle-out {
-  from {
-    opacity: 1;
-    transform: translateY(0);
+/* Contact */
+
+.contact-mail {
+  display: inline-block;
+  margin-top: 2rem;
+  font-family: var(--font-sign);
+  font-size: clamp(1.75rem, 5.2vw, 4rem);
+  font-weight: 600;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+  text-decoration: underline var(--route) 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+.contact-mail:hover {
+  color: var(--route);
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  margin-top: 1.75rem;
+  font-weight: 500;
+}
+
+.contact-links a,
+.back-link {
+  text-decoration: underline var(--route) 2px;
+  text-underline-offset: 0.3em;
+}
+
+.contact-links a:hover,
+.back-link:hover {
+  color: var(--route);
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--ink);
+  padding-block: 1.75rem;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.site-footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+}
+
+/* ---------- Project sheet and 404 ---------- */
+
+.sheet {
+  padding-block: clamp(2.5rem, 6vw, 5rem) clamp(4.5rem, 10vw, 8rem);
+  min-height: calc(100svh - var(--header-h) - 5rem);
+}
+
+.back-link {
+  font-weight: 500;
+}
+
+.sheet-head {
+  margin-top: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.sheet h1 {
+  font-size: clamp(3.5rem, 11vw, 9rem);
+  line-height: 0.88;
+}
+
+.sheet-subtitle {
+  margin-top: 1rem;
+  font-family: var(--font-feature);
+  font-style: italic;
+  font-size: clamp(1.125rem, 2.2vw, 1.5rem);
+  color: var(--muted);
+}
+
+.sheet-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 3fr);
+  gap: 1.25rem 2rem;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--ink);
+}
+
+.sheet-meta dt,
+.stats dt {
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+.sheet-meta dd {
+  font-weight: 500;
+}
+
+.sheet-part {
+  margin-top: clamp(4rem, 9vw, 7rem);
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--rule);
+}
+
+.features div {
+  padding-block: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+
+.features div:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.features dt {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.features dd {
+  margin-top: 0.4rem;
+  max-width: 36rem;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--ink);
+}
+
+.stats dd {
+  font-family: var(--font-sign);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.stats dt {
+  margin-top: 0.4rem;
+}
+
+@media (max-width: 40rem) {
+  .sheet-meta,
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  to {
-    opacity: 0;
-    transform: translateY(-100%);
+
+  .sheet-meta div:last-child {
+    grid-column: 1 / -1;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .subtitle-flip-enter,
-  .subtitle-flip-exit {
-    animation: none;
-  }
+.lost .prose {
+  margin-top: 2rem;
 }
 
-.mobile-nav-panel {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-0.75rem);
-  transition:
-    opacity 0.28s ease,
-    transform 0.28s ease,
-    visibility 0.28s ease;
-}
-
-.mobile-nav-panel[data-state="open"] {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .mobile-nav-panel {
-    transition: opacity 0.15s ease, visibility 0.15s ease;
-    transform: none;
-  }
+.lost-path {
+  margin-top: 0.5rem;
+  color: var(--muted);
+  overflow-wrap: anywhere;
 }
