@@ -15,7 +15,7 @@ Single-scroll landing page with anchor navigation. Project case studies live on 
 | `/` | Landing — About, Hobbies, Projects, Timeline, Contact |
 | `/project/emulator` | Example project case study |
 
-Content is inlined directly in page and section components. Only global config (name, nav, social links) lives in [`lib/site.ts`](lib/site.ts).
+All copy lives in [`lib/content.ts`](lib/content.ts) and [`lib/projects.ts`](lib/projects.ts); global config (name, nav, social links) in [`lib/site.ts`](lib/site.ts). Components only handle presentation.
 
 ---
 
@@ -24,60 +24,49 @@ Content is inlined directly in page and section components. Only global config (
 ```
 app/
 ├── layout.tsx              # Root layout, fonts, metadata
-├── page.tsx                # Home — composes all sections
+├── page.tsx                # Home — cover sheet + numbered sections
 ├── not-found.tsx           # Styled 404 page
 └── project/
     └── emulator/
         └── page.tsx        # Project case study
 
 components/
-├── ui/                     # Primitives (Section, Card, Chip, Timeline, …)
-├── layout/                 # Header, Footer
-├── home/                   # Landing page sections
-├── project/                # Composable project blocks
-└── effects/
-    └── particle-grid.tsx   # Canvas hero background
+├── site-header.tsx         # Sticky header + navigation
+├── site-footer.tsx
+├── theme-toggle.tsx        # Auto / Hell / Dunkel
+├── section.tsx             # Numbered section with left rail heading
+├── pinout.tsx              # Hero: navigation drawn as an IC pin diagram
+├── career-diagram.tsx      # Career as a timing diagram on a year axis
+└── project-sheet.tsx       # Layout for a project case study
 
 lib/
+├── content.ts              # Landing page copy
+├── projects.ts             # Project case study data
 ├── site.ts                 # Global site config
+├── theme.ts                # Theme preference storage
 └── cn.ts                   # Tailwind class merge helper
 ```
 
----
-
-## Component approach
-
-Small, composable building blocks assembled directly in page files — no monolithic layout wrappers, no separate data layer.
-
-**UI primitives:** `Container` · `Section` · `SectionHeader` · `Chip` · `Card` · `Button` · `TextLink` · `ImageFrame` · `TwoColumn` · `StatGrid` · `FeatureGrid` · `QuoteBlock` · `Timeline` · `ProjectCard` · `CodeBlock`
-
-**Project blocks:**
-
-| Component | Purpose |
-|-----------|---------|
-| `ProjectHero` | Title, tags, year, duration, status, back link |
-| `ProjectDescription` | Two-column text + screenshot |
-| `ProjectFeatures` | Feature cards + stat grid |
-| `ProjectGallery` | Image grid |
-| `ProjectNav` | Previous / next project links |
+Project images listed in `lib/projects.ts` are only rendered once the file exists under `public/`; prev/next links only when the target route is listed in `projectRoutes`.
 
 ---
 
 ## Design system
 
-Dark theme with amber accents. Tokens in [`app/globals.css`](app/globals.css):
+The site is laid out like a component datasheet: numbered sections, ruled tables, one spot colour. Light mode is the printed sheet, dark mode the circuit board. Tokens in [`app/globals.css`](app/globals.css):
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `deep-space` | `#0f0e0c` | Page background |
-| `charcoal` | `#1a1917` | Alternate sections |
-| `amber` | `#e86101` | Accent, CTAs, tags |
-| `text-primary` | `#e8e6e3` | Body text |
-| `text-secondary` | `#8a8680` | Muted text |
+| Token | Light | Dark | Usage |
+|-------|-------|------|-------|
+| `paper` | `#f5f7f4` | `#06110d` | Page background |
+| `sheet` | `#ffffff` | `#0a1913` | Raised surfaces |
+| `ink` | `#0d1512` | `#e7f0ea` | Text, heavy rules |
+| `muted` | `#55615b` | `#8ea69b` | Secondary text |
+| `hair` | `#cdd5cf` | `#1e352b` | Hairline rules |
+| `accent` | `#0a7a55` | `#46e0a0` | Spot colour |
 
-**Fonts:** Space Grotesk (display) · Inter (body) · IBM Plex Mono (labels, code)
+**Fonts:** Archivo (variable width — condensed for display, normal for body) · DM Mono (labels, data)
 
-Utility classes: `.chip` · `.section-label` · `.text-link` · `.code-block`
+Utility classes: `.display` · `.heading` · `.label` · `.prose-sheet` · `.hatch` · `.track`
 
 ---
 

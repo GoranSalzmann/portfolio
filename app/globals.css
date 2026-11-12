@@ -2,49 +2,37 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/*
+ * Datasheet theme.
+ * Light: a printed component datasheet — white stock, black ink, one spot colour.
+ * Dark:  the board itself — solder-mask green with silkscreen-white lettering.
+ */
 @theme {
-  --color-deep-space: #0f0e0c;
-  --color-charcoal: #1a1917;
-  --color-warm-grey: #2a2926;
-  --color-bone: #e8e6e3;
-  --color-stone: #8a8680;
-  --color-parchment: #f4f1eb;
-  --color-linen: #ebe6dc;
-  --color-sand: #d4cfc4;
-  --color-amber: #e86101;
-  --color-amber-bright: #ff751a;
-  --color-amber-deep: #c95200;
-  --color-amber-10: #e861011a;
-  --color-amber-20: #e8610133;
-  --color-amber-30: #e861014d;
+  --color-paper: #f5f7f4;
+  --color-sheet: #ffffff;
+  --color-ink: #0d1512;
+  --color-muted: #55615b;
+  --color-hair: #cdd5cf;
+  --color-accent: #0a7a55;
+  --color-accent-soft: #0a7a5514;
+  --color-on-accent: #ffffff;
 
-  --color-background: var(--color-parchment);
-  --color-surface: var(--color-linen);
-  --color-border: var(--color-sand);
-  --color-foreground: var(--color-deep-space);
-  --color-muted: var(--color-stone);
-  --color-accent: var(--color-amber);
-  --color-accent-hover: var(--color-amber-deep);
-  --color-accent-10: var(--color-amber-10);
-  --color-accent-20: var(--color-amber-20);
-  --color-accent-30: var(--color-amber-30);
-  --color-on-accent: var(--color-deep-space);
-
-  --font-display: var(--font-space-grotesk);
-  --font-body: var(--font-inter);
-  --font-mono: var(--font-ibm-plex-mono);
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-dm-mono), ui-monospace, monospace;
 }
 
 @layer theme {
   :root,
   :host {
     @variant dark {
-      --color-background: var(--color-deep-space);
-      --color-surface: var(--color-charcoal);
-      --color-border: var(--color-warm-grey);
-      --color-foreground: var(--color-bone);
-      --color-muted: var(--color-stone);
-      --color-accent-hover: var(--color-amber-bright);
+      --color-paper: #06110d;
+      --color-sheet: #0a1913;
+      --color-ink: #e7f0ea;
+      --color-muted: #8ea69b;
+      --color-hair: #1e352b;
+      --color-accent: #46e0a0;
+      --color-accent-soft: #46e0a01f;
+      --color-on-accent: #06110d;
     }
   }
 }
@@ -58,169 +46,113 @@ html.dark {
   color-scheme: dark;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-}
-
 body {
-  font-family: var(--font-body);
-  background-color: var(--color-background);
-  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background-color: var(--color-accent-30);
-  color: var(--color-foreground);
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-background);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 0;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-muted);
-}
-
-.code-block {
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  line-height: 1.6;
-}
-
-.code-block .function {
-  color: var(--color-foreground);
-}
-
-.code-block .type {
-  color: var(--color-muted);
-}
-
-.code-block .comment {
-  color: color-mix(in srgb, var(--color-muted) 50%, transparent);
-}
-
-.code-block .string {
-  color: color-mix(in srgb, var(--color-accent) 70%, transparent);
-}
-
-.code-block .number {
-  color: color-mix(in srgb, var(--color-accent) 80%, transparent);
-}
-
-.code-block .keyword {
-  color: var(--color-accent);
-}
-
-.chip {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.75rem;
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  background-color: var(--color-accent-10);
-  border: 1px solid var(--color-accent-20);
-  color: var(--color-accent);
-}
-
-.section-label {
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  color: var(--color-accent);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.text-link {
-  position: relative;
-  color: var(--color-accent);
-  text-decoration: none;
-}
-
-.text-link::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1px;
   background-color: var(--color-accent);
-  transition: width 0.3s ease;
+  color: var(--color-on-accent);
 }
 
-.text-link:hover::after {
-  width: 100%;
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
 }
 
-.subtitle-flip-enter {
-  animation: subtitle-in 0.5s ease forwards;
+/* Part-number lettering: Archivo at its narrowest width, set tight. */
+.display {
+  font-stretch: 62%;
+  font-weight: 800;
+  line-height: 0.84;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
 }
 
-.subtitle-flip-exit {
-  animation: subtitle-out 0.5s ease forwards;
+.heading {
+  font-stretch: 75%;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.005em;
 }
 
-@keyframes subtitle-in {
+/* Small mono captions: table heads, pin numbers, section numbers. */
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.prose-sheet {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  max-width: 64ch;
+  text-wrap: pretty;
+}
+
+.link {
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+  transition: color 0.15s ease;
+}
+
+.link:hover {
+  color: var(--color-accent);
+}
+
+/* "Reserved" area, as in a memory map: diagonal hatching. */
+.hatch {
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--color-hair) 0 1px,
+    transparent 1px 10px
+  );
+}
+
+/* Timing-diagram track: one gridline per year column. */
+.track {
+  background-image: linear-gradient(
+    to right,
+    var(--color-hair) 1px,
+    transparent 1px
+  );
+  background-size: calc(100% / var(--years)) 100%;
+  border-right: 1px solid var(--color-hair);
+}
+
+.track-bar {
+  transform-origin: left center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .track-bar {
+      animation: bar-in linear both;
+      animation-timeline: view();
+      animation-range: entry 10% entry 90%;
+    }
+  }
+}
+
+@keyframes bar-in {
   from {
-    opacity: 0;
-    transform: translateY(100%);
+    transform: scaleX(0);
   }
   to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes subtitle-out {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-100%);
+    transform: scaleX(1);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .subtitle-flip-enter,
-  .subtitle-flip-exit {
-    animation: none;
-  }
-}
-
-.mobile-nav-panel {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-0.75rem);
-  transition:
-    opacity 0.28s ease,
-    transform 0.28s ease,
-    visibility 0.28s ease;
-}
-
-.mobile-nav-panel[data-state="open"] {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .mobile-nav-panel {
-    transition: opacity 0.15s ease, visibility 0.15s ease;
-    transform: none;
+  html {
+    scroll-behavior: auto;
   }
 }
