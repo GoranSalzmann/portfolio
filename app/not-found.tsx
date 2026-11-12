@@ -2,98 +2,30 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight, Home } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { CodeBlock } from "@/components/ui/code-block";
-import { Container } from "@/components/ui/container";
 import { navLinks } from "@/lib/site";
 
 export default function NotFound() {
   const pathname = usePathname();
-
   return (
-    <main className="relative flex min-h-screen items-center overflow-hidden bg-background">
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 30%, rgba(232,97,1,0.06) 0%, transparent 55%)",
-        }}
-      />
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(to bottom, transparent 60%, var(--color-background) 100%)",
-        }}
-      />
-
-      <section className="relative z-10 w-full px-[5vw] pb-24 pt-32">
-        <Container className="max-w-[640px] space-y-8 text-center">
-          <p className="section-label">404 — Seite nicht gefunden</p>
-
-          <h1
-            className="font-display font-bold leading-[0.85] tracking-tight text-foreground"
-            style={{ fontSize: "clamp(5rem, 18vw, 9rem)" }}
-          >
-            404
-          </h1>
-
-          <div className="flex items-center justify-center gap-4">
-            <div className="h-px w-[60px] bg-accent" />
-            <p className="font-mono text-xs uppercase tracking-wider text-muted md:text-sm">
-              Not Found
-            </p>
-            <div className="h-px w-[60px] bg-accent" />
-          </div>
-
-          <p className="text-lg leading-relaxed text-muted">
-            Die angeforderte Route existiert nicht oder wurde verschoben.
-          </p>
-
-          <CodeBlock>
-            <p className="mb-3 text-muted">
-              $ navigate{" "}
-              <span className="text-foreground">{pathname}</span>
-            </p>
-            <p>
-              <span className="keyword">Error</span>
-              {": "}
-              <span className="type">ENOENT</span>
-              <span className="text-muted"> — </span>
-              <span className="string">route not found</span>
-            </p>
-          </CodeBlock>
-
-          <div className="flex flex-col items-center justify-center gap-4 pt-2 sm:flex-row">
-            <Button href="/">
-              <Home size={18} />
-              Zur Startseite
-            </Button>
-          </div>
-
-          <div className="space-y-4 pt-4">
-            <p className="font-mono text-xs uppercase tracking-wider text-muted">
-              Oder schau dich um:
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="group inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-accent"
-                >
-                  <span className="text-link">{link.label}</span>
-                  <ArrowRight
-                    size={14}
-                    className="-translate-x-1 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100"
-                  />
-                </Link>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </section>
+    <main className="flex min-h-screen items-center py-32">
+      <div className="wrap">
+        <h1
+          className="display font-extrabold"
+          style={{ fontSize: "clamp(8rem, 38vw, 30rem)", fontVariationSettings: '"wdth" 80', lineHeight: 0.8 }}
+        >
+          404<span className="text-star">.</span>
+        </h1>
+        <p className="display mt-10 text-3xl font-semibold">Seite nicht gefunden</p>
+        <p className="mt-3 max-w-lg text-muted">
+          Die Route <code className="text-fg">{pathname}</code> existiert nicht oder wurde verschoben.
+        </p>
+        <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3">
+          <li><Link href="/" className="font-semibold underline decoration-star decoration-2 underline-offset-4">Zur Startseite</Link></li>
+          {navLinks.map((l) => (
+            <li key={l.href}><Link href={l.href} className="text-muted hover:text-fg">{l.label}</Link></li>
+          ))}
+        </ul>
+      </div>
     </main>
   );
 }

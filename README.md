@@ -15,7 +15,7 @@ Single-scroll landing page with anchor navigation. Project case studies live on 
 | `/` | Landing — About, Hobbies, Projects, Timeline, Contact |
 | `/project/emulator` | Example project case study |
 
-Content is inlined directly in page and section components. Only global config (name, nav, social links) lives in [`lib/site.ts`](lib/site.ts).
+Content lives in [`lib/content.ts`](lib/content.ts); global config (name, nav, social links) in [`lib/site.ts`](lib/site.ts). Sections are in `components/sections/`, the interactive star field in `components/sky/`.
 
 ---
 
