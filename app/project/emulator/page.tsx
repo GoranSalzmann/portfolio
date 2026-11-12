@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import { ProjectDescription } from "@/components/project/project-description";
-import { ProjectFeatures } from "@/components/project/project-features";
-import { ProjectGallery } from "@/components/project/project-gallery";
-import { ProjectHero } from "@/components/project/project-hero";
-import { ProjectNav } from "@/components/project/project-nav";
+import Link from "next/link";
+import { SiteFooter } from "@/components/site-footer";
+import { emulator } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "6502 Emulator — Mike Karl",
@@ -12,85 +10,67 @@ export const metadata: Metadata = {
 };
 
 export default function EmulatorPage() {
+  const [lead, ...rest] = emulator.paragraphs;
+
   return (
-    <main className="min-h-screen bg-background">
-      <ProjectHero
-        title="6502 Emulator"
-        subtitle="Cycle-accurate CPU-Simulation in C++"
-        tags={[
-          "C++",
-          "6502 Assembly",
-          "Systems Programming",
-          "Emulation",
-        ]}
-        year="2023"
-        duration="6 Monate"
-        status="Abgeschlossen"
-      />
+    <div className="page">
+      <main>
+        <section className="shell flex min-h-[80svh] flex-col justify-end pb-[clamp(3rem,8vh,6rem)] pt-28">
+          <p>
+            <Link href="/#projects" className="nav-link">
+              Zurück zu den Projekten
+            </Link>
+          </p>
+          <h1 className="mt-6 text-[clamp(3.25rem,11vw,9rem)] font-extralight italic leading-[0.9] tracking-[-0.035em]">
+            {emulator.title}
+          </h1>
+          <p className="mt-6 max-w-xl text-lg text-muted md:text-xl">{emulator.subtitle}</p>
+          <dl className="mt-8 flex flex-wrap gap-x-10 gap-y-3">
+            {emulator.meta.map((item) => (
+              <div key={item.label}>
+                <dt className="text-sm text-muted">{item.label}</dt>
+                <dd className="font-display text-xl italic">{item.value}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="mt-6 text-sm text-muted">{emulator.tags.join(", ")}</p>
+        </section>
 
-      <ProjectDescription
-        paragraphs={[
-          "Der MOS 6502 ist der Chip, der die Home-Computer-Revolution antrieb: Apple II, Commodore 64, Nintendo Entertainment System. Er hat 3510 Transistoren. Jeder einzelne zählt.",
-          "Mein Emulator simuliert jeden Taktzyklus des 6502 mit Cycle-Accuracy – das bedeutet, dass die Timing-Korrektheit bis auf einen Takt genau stimmt. Das ist entscheidend für Systeme, die auf präzise Hardware-Timing angewiesen sind, wie der C64 mit seinem VIC-II-Grafikchip.",
-          "Der Emulator enthält einen eigenen Assembler-Parser, der 6502-Assembly-Syntax in Maschinencode übersetzt. Keine externen Abhängigkeiten – nur C++, Standardbibliotheken und das Verständnis der Architektur.",
-        ]}
-        image="/assets/emulator-screenshot.svg"
-        imageAlt="6502 Emulator Terminal"
-      />
+        <section className="shell py-[clamp(4rem,10vw,8rem)]">
+          <h2 className="heading">Das Projekt</h2>
+          <div className="mt-8 max-w-[40rem] space-y-6">
+            <p className="lead">{lead}</p>
+            {rest.map((paragraph) => (
+              <p key={paragraph} className="text-muted">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </section>
 
-      <ProjectFeatures
-        features={[
-          {
-            title: "Cycle-Accurate Simulation",
-            description:
-              "Jeder Befehl wird mit korrektem Takt-Verbrauch simuliert. Seiten-Effekte, Page-Crossing-Penalties, genaue Adressierungsmodi.",
-          },
-          {
-            title: "Assembler-Parser",
-            description:
-              "Eigener zweipassiger Assembler mit Label-Auflösung, Expression-Evaluation und Fehlerberichterstattung.",
-          },
-          {
-            title: "Speichersystem",
-            description:
-              "64KB Adressraum mit korrekter Memory-Mapping-Logik. RAM, ROM und Memory-Mapped I/O.",
-          },
-        ]}
-        stats={[
-          { label: "Transistoren simuliert", value: "3,510" },
-          { label: "Implementierte Befehle", value: "56" },
-          { label: "Adressierungsmodi", value: "13" },
-          { label: "Taktzyklen getestet", value: "1M+" },
-        ]}
-      />
-
-      <ProjectGallery
-        images={[
-          {
-            src: "/assets/emulator-screenshot.svg",
-            alt: "6502 Emulator Terminal",
-          },
-          {
-            src: "/assets/emulator-display.svg",
-            alt: "Assembler Code",
-          },
-          {
-            src: "/assets/debugger-view.svg",
-            alt: "Debugger Register State",
-          },
-        ]}
-      />
-
-      <ProjectNav
-        prev={{
-          title: "Raycasting Engine",
-          href: "/project/raycaster",
-        }}
-        next={{
-          title: "Software Raytracer",
-          href: "/project/raytracer",
-        }}
-      />
-    </main>
+        <section className="shell pt-[clamp(4rem,10vw,8rem)]">
+          <h2 className="heading">Technische Umsetzung</h2>
+          <ul className="mt-10 max-w-[40rem] space-y-8">
+            {emulator.features.map((feature) => (
+              <li key={feature.title}>
+                <h3 className="text-2xl">{feature.title}</h3>
+                <p className="mt-2 text-muted">{feature.description}</p>
+              </li>
+            ))}
+          </ul>
+          <dl className="mt-14 grid max-w-[40rem] grid-cols-2 gap-x-10 gap-y-8">
+            {emulator.stats.map((stat) => (
+              <div key={stat.label}>
+                <dd className="font-display text-5xl font-light italic tabular-nums text-accent">
+                  {stat.value}
+                </dd>
+                <dt className="mt-1 text-sm text-muted">{stat.label}</dt>
+              </div>
+            ))}
+          </dl>
+        </section>
+      </main>
+      <SiteFooter />
+    </div>
   );
 }
